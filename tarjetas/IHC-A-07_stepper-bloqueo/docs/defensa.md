@@ -4,8 +4,8 @@
 |---|---|
 | Responsable de la tarjeta (todas las fases) | González Álvarez Vladimir Humberto |
 | Revisor del pull request y observador de la prueba | Mora Beltrán Santiago Sebastián |
-| Issue del hallazgo | #7 |
-| Ramas | `feature/vladimir-tarjetas-07-09` |
+| Issue del hallazgo | #7 · Issue de la incidencia (cerrada por el PR de incidencias) |
+| Ramas | `feature/vladimir-tarjetas-07-09` · `fix/vladimir-incidencias-07-09` |
 
 **1. Ruta normal y de error:** ver `prototipo/README.md`.
 
@@ -21,3 +21,6 @@
 **¿Cómo aplica la visibilidad del estado del sistema de Nielsen?**
 
 Con el Stepper (pasos completados ✓, actual resaltado y «Paso n de 5 · Nombre» en texto), la barra de progreso, el estado de guardado y mensajes inmediatos al intentar avanzar; la persona siempre sabe dónde está, qué terminó y qué falta.
+
+## Incidencia
+«Bloquear avances inválidos con explicación y permitir volver sin perder marcas» — `tryGo()` y «Continuar» llaman a `explain()`, que muestra la lista de faltantes con `role="alert"` y foco; las marcas se conservan al volver. Ver `docs/incidencia.md`.

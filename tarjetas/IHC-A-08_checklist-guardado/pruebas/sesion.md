@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 166 s | 2 | 2 (10 s al ver la checklist vacía; 6 s en el cierre) | No pudo finalizar: las marcas se borraron al volver | «Decía guardado y se borró todo.» |
 | v2 | 97 s | 0 | 0 | Las marcas se conservaron; finalizó | «Ahora sí siguen marcadas.» |
-
+| v2 con incidencia | 91 s | 0 | 0 | Vio «Guardando…» y «Guardado · hora» y la barra de progreso | «Sé cuándo ya se guardó.» |
 
 ## Observaciones con v1
 - Marcó 3 casillas; apareció «✓ Guardado».
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Preservar checklist, diferenciar guardado de no guardado y mostrar progreso» — Vio «Guardando…» y «Guardado · hora» y la barra de progreso (91 s, 0 errores). Cita: «Sé cuándo ya se guardó.» Evidencia: `evidencias/incidencia/`.
