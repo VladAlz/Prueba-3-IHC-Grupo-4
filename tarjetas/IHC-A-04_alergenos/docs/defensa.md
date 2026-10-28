@@ -23,4 +23,4 @@
 Con dos evidencias observadas: (1) comprensión — en la prueba la persona verbaliza «el brownie tiene nueces» al leer el aviso; (2) corrección — usa «Volver a editar», quita el brownie y confirma solo café y sánduche (registro en pruebas/sesion.md, tiempo y cita).
 
 ## Incidencia
-«Incorporar aviso accesible y opción de volver a editar sin perder pedido» — El aviso tiene `role="alert"`, recibe el foco y ofrece «Volver a editar sin perder el pedido», que abre «Mi pedido» con el foco en el producto marcado. Ver `docs/incidencia.md`.
+«Mostrar ingrediente/alerta antes de confirmar y ofrecer volver al detalle sin vaciar carrito.» — `openDetail()` muestra la alerta del alérgeno (`role="alert"`) con «Quitar del pedido»; la advertencia de «Revisa y confirma» ofrece «Ver el detalle de X» y «Volver a editar sin perder el pedido»; el carrito no se vacía. Ver `docs/incidencia.md`.

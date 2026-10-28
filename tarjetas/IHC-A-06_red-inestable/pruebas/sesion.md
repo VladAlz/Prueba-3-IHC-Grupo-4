@@ -41,4 +41,4 @@
 ![Curva antes y después](../diagramas/curva-despues.png)
 
 ## Prueba de la incidencia
-«Modelar pendiente / confirmado / no confirmado y evitar duplicación» — Con corte de red vio «No confirmado», reintentó y obtuvo un solo pedido (73 s, 0 errores). Cita: «Dice que no se registró y que no se duplica, entonces reintento.» Evidencia: `evidencias/incidencia/`.
+«Mostrar no confirmado, reintento seguro y conservar datos; evitar afirmar éxito no verificado.» — Con corte de red vio «No confirmado», reintentó y obtuvo un solo pedido (73 s, 0 errores). Cita: «Dice que no se registró y que no se duplica, entonces reintento.» Evidencia: `evidencias/incidencia/`.

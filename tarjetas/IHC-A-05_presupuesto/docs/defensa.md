@@ -23,4 +23,4 @@
 «Editar Mi pedido» pasa a ser momento de verdad: en el diagnóstico se consideraba un paso neutro, pero la observación mostró que un solo «+» lleva el pedido de $4,25 a $5,75 sin aviso; ahí se decide si la persona respeta su presupuesto o paga de más (emoción −2 en la curva inicial).
 
 ## Incidencia
-«Avisar antes de confirmar y ofrecer ajustar el pedido manteniendo el carrito» — En el clic de confirmar, si `total() > BUDGET`, se abre un diálogo con la diferencia y «Ajustar pedido» (vuelve a «Mi pedido» sin vaciar el carrito) o «Confirmar igual». Ver `docs/incidencia.md`.
+«Actualizar total, explicar el cambio y permitir modificar cantidades o cancelar.» — Al confirmar, si la cafetería actualizó un precio, se aplica el nuevo precio y se abre un diálogo con el desglose (producto y total antes → ahora) y las acciones «Modificar cantidades» (conserva el carrito), «Cancelar pedido» y «Confirmar nuevo total». Ver `docs/incidencia.md`.

@@ -23,4 +23,4 @@
 Visualmente: Pendiente = chip ámbar con ◷ «Pendiente de confirmación»; Confirmado = chip verde con ✓; No confirmado = banner rojo con ✕; nunca solo color. Semánticamente: Pendiente usa `role="status"` y `aria-busy` en el botón; No confirmado usa `role="alert"` y recibe el foco; Confirmado se anuncia con el número de pedido.
 
 ## Incidencia
-«Modelar pendiente / confirmado / no confirmado y evitar duplicación» — `send()` asigna un código de envío `S.key` reutilizado al reintentar; la cafetería devuelve el mismo pedido si el código ya existe; los estados Pendiente / Confirmado / No confirmado tienen ícono, texto y anuncio propios. Ver `docs/incidencia.md`.
+«Mostrar no confirmado, reintento seguro y conservar datos; evitar afirmar éxito no verificado.» — `send()` asigna un código de envío `S.key` reutilizado al reintentar; la cafetería devuelve el mismo pedido si el código ya existe; los estados Pendiente / Confirmado / No confirmado tienen ícono, texto y anuncio propios. Ver `docs/incidencia.md`.

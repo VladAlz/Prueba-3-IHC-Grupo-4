@@ -13,4 +13,4 @@
 | **RF-07** | **Modelar tres estados — Pendiente (◷, ámbar), Confirmado (✓, verde) y No confirmado (✕, rojo) — con texto, ícono y anuncio; reintentar usa el mismo código de envío para no duplicar.** | Con «Se corta», aparece «No confirmado»; al reintentar se obtiene un solo pedido N.º 031. | Incidencia sorpresa |
 
 ## Cambio por la incidencia
-«Modelar pendiente / confirmado / no confirmado y evitar duplicación» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
+«Mostrar no confirmado, reintento seguro y conservar datos; evitar afirmar éxito no verificado.» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
