@@ -10,3 +10,7 @@
 | RF-04 | Mostrar procesando, error con reintento y confirmación con total. | Se ven los tres estados. | Tarea crítica |
 | RNF-01 | El aviso de exceso usa texto e ícono, no solo color. | Legible en escala de grises. | Restricción de la tarjeta |
 | RNF-02 | Operable con teclado; el aviso se anuncia (aria-live). | El lector lee «Total $5,75». | Accesibilidad (WCAG 2.2) |
+| **RF-07** | **Si el precio de un producto cambia antes de confirmar, actualizar el total, explicar el cambio con un desglose (antes → ahora) y permitir modificar cantidades, cancelar o confirmar el nuevo total.** | Con el sánduche a $3,25, «Confirmar» muestra el desglose $2,75 → $3,25 y total $4,25 → $4,75, con «Modificar cantidades», «Cancelar pedido» y «Confirmar nuevo total». | Incidencia sorpresa |
+
+## Cambio por la incidencia
+«Actualizar total, explicar el cambio y permitir modificar cantidades o cancelar.» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

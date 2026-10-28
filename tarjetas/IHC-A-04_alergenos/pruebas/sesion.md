@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 118 s | 1 | 1 (7 s en «Info») | Confirmó el pedido con el brownie (contiene nueces) sin ver aviso | «No vi nada de alergias, pensé que estaba bien.» |
 | v2 | 97 s | 0 | 1 (6 s leyendo la advertencia) | Vio la advertencia; desmarcó y volvió a «Mi pedido» por su cuenta | «Ah, el brownie tiene nueces, lo saco.» |
-
+| v2 con incidencia | 88 s | 0 | 1 (5 s leyendo el detalle) | Desde la advertencia abrió el detalle, leyó «Contiene frutos secos», quitó el brownie y volvió a revisar con café y sánduche | «En el detalle ya sale que tiene nueces, lo saco.» |
 
 ## Observaciones con v1
 - Agregó el brownie desde el menú: no había ninguna marca de alérgeno.
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Mostrar ingrediente/alerta antes de confirmar y ofrecer volver al detalle sin vaciar carrito.» — Desde la advertencia abrió el detalle, leyó «Contiene frutos secos», quitó el brownie y volvió a revisar con café y sánduche (88 s, 0 errores). Cita: «En el detalle ya sale que tiene nueces, lo saco.» Evidencia: `evidencias/incidencia/`.

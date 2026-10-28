@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es" data-card="06" data-ver="v2">
+<html lang="es" data-card="06" data-ver="v3">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CaféU · IHC-A-06 · prototipo v2</title>
+<title>CaféU · IHC-A-06 · prototipo v2 (con incidencia)</title>
 <style>
 :root{--brown:#4E342E;--cta:#B33A0B;--cta-h:#962F08;--bg:#FAF6F0;--surface:#fff;--ink:#2B1D19;--muted:#5D4A43;--border:#D7C8BC;--soft:#F3E9DF;
 --ok:#2E7D32;--ok-bg:#E8F5E9;--err:#C62828;--err-bg:#FDECEA;--warn:#7A4300;--warn-bg:#FFF4E5;--info:#1E4E8C;--info-bg:#EAF1FB;--focus:#1E4E8C;--dis:#EEE6DE;--dis-tx:#6E5F58;
@@ -92,6 +92,7 @@ html.wire .bar span{background:#888!important}
   <label class="check"><input type="checkbox" id="sim-fail"> Fallo de red en el próximo envío</label>
   <div class="field" id="netfield" hidden><label for="netmode">Red de prueba</label>
     <select id="netmode"><option value="ok">Estable</option><option value="slow">Lenta (4 s)</option><option value="drop">Se corta (sin respuesta)</option></select></div>
+  <label class="check" id="pricefield" hidden><input type="checkbox" id="price-up"> Subir +$0,50 el precio del Sánduche antes de confirmar</label>
   <span class="muted small" id="verlabel"></span>
 </aside>
 <div class="phone">
@@ -214,10 +215,16 @@ html.wire .bar span{background:#888!important}
     budgetPedido: CARD === '05' && V >= 2,
     budgetGate: CARD === '05' && V === 3,
     doubleSubmit: CARD === '06' && V === 1,
-    threeStates: CARD === '06' && V === 3,
+    threeStates: (CARD === '06' || CARD === '03') && V === 3,
+    reviewDiff: CARD === '01' && V === 3,
+    priceExplain: CARD === '05' && V === 3,
+    detailAlert: CARD !== '04' || V === 3,
   };
   if (qs.has('prueba')) { $('#testpanel').hidden = false; $('#verlabel').textContent = 'Tarjeta IHC-A-' + CARD + ' · ' + (V === 3 ? 'v2.1 (incidencia)' : 'v' + V); }
-  if (CARD === '06') $('#netfield').hidden = false;
+  if (qs.get('gris') === '1') document.documentElement.style.filter = 'grayscale(1)';
+  if (CARD === '06' || CARD === '03') $('#netfield').hidden = false;
+  if (CARD === '03') $('#netmode').options[1].textContent = 'Lenta (8 s)';
+  if (CARD === '05') $('#pricefield').hidden = false;
   if (CARD === '04') $('#allergy-field').hidden = false;
   if (CARD === '05') $('#budget-intro').hidden = false;
   if (CARD === '03') $('#privacy-intro').hidden = false;
@@ -298,8 +305,11 @@ html.wire .bar span{background:#888!important}
   function openDetail(id) {
     const p = prod(id); S.detail = id;
     $('#h-detalle').textContent = p.name; $('#det-price').textContent = money(p.price); $('#det-ing').textContent = p.ing;
-    $('#det-alert').innerHTML = hits(p) ? `<div class="banner warn"><span class="ic" aria-hidden="true">!</span><div><strong>Contiene ${esc(allergy())}</strong>Declaraste alergia a este ingrediente.</div></div>` : (p.al.length ? `<p class="small muted">Alérgenos: ${p.al.join(', ')}.</p>` : '');
+    const inCart = S.cart.some(i => i.id === id);
+    $('#det-alert').innerHTML = !F.detailAlert ? '' : hits(p) ? `<div class="banner warn" role="alert"><span class="ic" aria-hidden="true">!</span><div><strong>Contiene ${esc(allergy())}</strong>Declaraste alergia a este ingrediente. Alérgenos: ${p.al.join(', ')}.${(CARD === '04' && inCart) ? `<div style="margin-top:8px"><button class="link" type="button" id="det-quit">Quitar ${esc(p.name)} del pedido</button></div>` : ''}</div></div>` : (p.al.length ? `<p class="small muted">Alérgenos: ${p.al.join(', ')}.</p>` : '');
+    const dq = $('#det-quit'); if (dq) dq.onclick = () => { const k = S.cart.findIndex(i => i.id === id); if (k >= 0) S.cart.splice(k, 1); updateBadge(); live(`${p.name} quitado. Tu pedido se conserva.`); goBack(); };
     $('#det-add').textContent = 'Agregar · ' + money(p.price);
+    $('#det-back').textContent = S.screen === 's-revisar' ? 'Volver a revisar' : 'Volver al menú';
     show('s-detalle');
   }
   $('#det-add').onclick = () => add(S.detail);
@@ -394,13 +404,21 @@ html.wire .bar span{background:#888!important}
       if (F.alergGate && fl.length) {
         const names = fl.map(i => prod(i.id).name).join(', ');
         n += `<div class="banner warn" id="alerg-warn" ${F.alergAccessible ? 'role="alert" tabindex="-1"' : ''}><span class="ic" aria-hidden="true">!</span><div><strong>Advertencia de alérgenos: ${esc(allergy())}</strong>${esc(names)} contiene ${esc(allergy())}, ingrediente al que declaraste alergia.
-        ${F.alergAccessible ? `<div style="margin-top:8px"><button class="link" type="button" id="alerg-edit">Volver a editar sin perder el pedido</button></div>` : ''}</div></div>
+        ${F.alergAccessible ? `<div style="margin-top:8px;display:flex;flex-direction:column;align-items:flex-start"><button class="link" type="button" id="alerg-det">Ver el detalle de ${esc(prod(fl[0].id).name)}</button><button class="link" type="button" id="alerg-edit">Volver a editar sin perder el pedido</button></div>` : ''}</div></div>
         <label class="check"><input type="checkbox" id="alerg-ok" aria-describedby="alerg-warn"> Leí la advertencia y quiero mantener este producto.</label>
         <p class="field-err small" id="alerg-err" style="color:var(--err);font-weight:700" hidden></p>`;
       }
     }
     if (CARD === '05') n += budgetBox('rev');
+    if (F.reviewDiff) {
+      if (S.revBase == null) S.revBase = total();
+      const dlt = total() - S.revBase;
+      if (Math.abs(dlt) > 1e-9) n += `<div class="banner warn" id="rev-diff" role="alert"><span class="ic" aria-hidden="true">!</span><div><strong>El total cambió</strong>Antes ${money(S.revBase)} → ahora ${money(total())} (${dlt > 0 ? '+' : '−'}${money(Math.abs(dlt))}). Revisa el resumen antes de confirmar.<div style="margin-top:8px"><button class="link" type="button" id="rev-ack">Revisé el nuevo total</button></div></div></div>`;
+    }
     $('#rev-notices').innerHTML = n;
+    const ra = $('#rev-ack'); if (ra) ra.onclick = () => { S.revBase = total(); renderReview(false); live(`Nuevo total ${money(total())} revisado.`); $('#confirm').focus(); };
+    if (F.reviewDiff) { const pend = !!$('#rev-diff'); $('#confirm').disabled = pend; if (pend) $('#confirm').setAttribute('aria-describedby', 'rev-diff'); else $('#confirm').removeAttribute('aria-describedby'); }
+    const ad = $('#alerg-det'); if (ad) ad.onclick = () => openDetail(flaggedInCart()[0].id);
     const ae = $('#alerg-edit'); if (ae) ae.onclick = () => { const id = flaggedInCart()[0].id; show('s-pedido'); const b = document.querySelector(`#cart-list [data-q="${id}"]`); if (b) b.focus(); live('Volviste a Mi pedido. Tu pedido se conserva.'); };
     if (F.alergAccessible && first && $('#alerg-warn')) setTimeout(() => $('#alerg-warn').focus(), 60);
     if (CARD === '01' && F.announceTotal && !first) live(`Total actualizado: ${money(total())}.`);
@@ -409,11 +427,21 @@ html.wire .bar span{background:#888!important}
     if (!all) return;
     $('#send-error').hidden = true; $('#sending').hidden = true; $('#send-state').innerHTML = ''; $('#over-dialog').innerHTML = '';
     const c = $('#confirm'); c.disabled = false; c.removeAttribute('aria-busy'); $('#edit').disabled = false;
-    if (CARD !== '06' || V < 3) S.key = null;
+    if (!F.threeStates) S.key = null;
   }
   $('#confirm').onclick = () => {
     if (S.busy && !F.doubleSubmit) return;
     if (!S.cart.length) return;
+    if (F.priceExplain === false && CARD === '05' && $('#price-up').checked && !S.priceApplied) { applyPrice(); }
+    if (F.priceExplain && $('#price-up').checked && !S.priceApplied) {
+      const before = total(); applyPrice(); const after = total();
+      $('#over-dialog').innerHTML = `<div class="dialog" role="alertdialog" aria-labelledby="pr-t" aria-describedby="pr-d"><b id="pr-t">El precio cambió antes de confirmar</b><div id="pr-d" class="small"><table style="width:100%;border-collapse:collapse"><tr><td>Sánduche de queso</td><td style="text-align:right">$2,75 → <b>$3,25</b></td></tr><tr><td>Total</td><td style="text-align:right">${money(before)} → <b>${money(after)}</b> (+${money(after - before)})</td></tr></table>La cafetería actualizó el precio. Tu carrito se conserva.</div><div class="row"><button class="btn secondary" id="pr-mod" type="button">Modificar cantidades</button><button class="btn danger" id="pr-cancel" type="button">Cancelar pedido</button></div><button class="btn primary" id="pr-ok" type="button">Confirmar nuevo total · ${money(after)}</button></div>`;
+      renderReview(false);
+      $('#pr-mod').onclick = () => { $('#over-dialog').innerHTML = ''; show('s-pedido'); live('Modifica las cantidades; tu pedido se conserva.'); };
+      $('#pr-cancel').onclick = () => { $('#over-dialog').innerHTML = ''; S.cart = []; updateBadge(); show('s-menu'); live('Pedido cancelado. No se cobró nada.'); };
+      $('#pr-ok').onclick = () => { $('#over-dialog').innerHTML = ''; S.overOk = true; $('#confirm').click(); S.overOk = false; };
+      $('#pr-mod').focus(); return;
+    }
     if (CARD === '01' && V === 3 && Math.abs(S.snapTotal - total()) > 1e-9) {
       const er = $('#send-error'); er.innerHTML = `<span class="ic" aria-hidden="true">!</span><div><strong>El total cambió</strong>Ahora es ${money(total())}. Revísalo y confirma de nuevo.</div>`; er.hidden = false; er.focus();
       renderReview(false); return;
@@ -431,13 +459,14 @@ html.wire .bar span{background:#888!important}
     }
     send();
   };
-  function netMode() { return CARD === '06' ? $('#netmode').value : 'ok'; }
+  function applyPrice() { const p = prod('sanduche'); p.price = 3.25; S.priceApplied = true; $('#price-up').checked = false; }
+  function netMode() { return (CARD === '06' || CARD === '03') ? $('#netmode').value : 'ok'; }
   function send() {
     const btn = $('#confirm');
     S.attempt++;
-    if (CARD === '06' && V === 3 && !S.key) S.key = 'ENV-' + String(4821 + S.orderNo).slice(-4);
+    if (F.threeStates && !S.key) S.key = 'ENV-' + String(4821 + S.orderNo).slice(-4);
     const mode = netMode(); const arrives = !$('#sim-fail').checked; const responds = arrives && mode !== 'drop';
-    const delay = mode === 'slow' ? 4000 : 1400;
+    const delay = mode === 'slow' ? (CARD === '03' ? 8000 : 4000) : 1400;
     if (!F.doubleSubmit) { S.busy = true; btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.innerHTML = '<span class="spin" aria-hidden="true"></span> Enviando…'; $('#edit').disabled = true; }
     $('#sending').hidden = false; $('#send-error').hidden = true;
     if (F.threeStates) { $('#send-state').innerHTML = `<p><span class="state pend" role="status"><span aria-hidden="true">◷</span> Pendiente de confirmación</span></p><p class="small muted">Tu pedido aún no está registrado. No lo des por hecho hasta ver «Confirmado».</p>`; live('Pedido pendiente de confirmación.'); }
@@ -494,7 +523,7 @@ html.wire .bar span{background:#888!important}
     const o = S.lastOrder;
     live(F.listoSolo ? 'Listo.' : `Pedido confirmado. Número ${o.no}. Total ${money(o.total)}.`);
   }
-  $('#new-order').onclick = () => { S.cart = []; S.orders = []; S.key = null; S.lastOrder = null; S.attempt = 0; S.hist = []; updateBadge(); show('s-menu'); };
+  $('#new-order').onclick = () => { S.cart = []; S.orders = []; S.key = null; S.lastOrder = null; S.revBase = null; S.attempt = 0; S.hist = []; updateBadge(); show('s-menu'); };
   $('#clear-device').onclick = () => { S.cart = []; S.orders = []; S.hist = []; updateBadge(); $('#ok-content').innerHTML = ''; show('s-inicio', {noHist:true}); live('Pedido borrado de este dispositivo.'); };
 
   const start = qs.get('pantalla');

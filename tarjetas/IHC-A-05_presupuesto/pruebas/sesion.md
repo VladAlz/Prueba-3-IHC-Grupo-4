@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 109 s | 1 | 1 (6 s en «Revisa y confirma») | Confirmó $5,75 sin darse cuenta del exceso | «Pensé que seguía en 4,25.» |
 | v2 | 86 s | 0 | 1 (4 s leyendo el aviso) | Vio «Te pasas por $1,50» y bajó a 1 café | «Me avisó al toque, bajo uno.» |
-
+| v2 con incidencia | 91 s | 0 | 1 (6 s leyendo el desglose) | Leyó que el sánduche subió $0,50 y eligió «Modificar cantidades»; ajustó y confirmó dentro de lo que quería pagar | «Me explicó por qué subió el total.» |
 
 ## Observaciones con v1
 - Agregó café y sánduche: el medidor del menú mostró $4,25 de $4,25.
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Actualizar total, explicar el cambio y permitir modificar cantidades o cancelar.» — Leyó que el sánduche subió $0,50 y eligió «Modificar cantidades»; ajustó y confirmó dentro de lo que quería pagar (91 s, 0 errores). Cita: «Me explicó por qué subió el total.» Evidencia: `evidencias/incidencia/`.

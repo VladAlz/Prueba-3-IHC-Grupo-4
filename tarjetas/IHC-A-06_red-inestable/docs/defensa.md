@@ -4,8 +4,8 @@
 |---|---|
 | Responsable de la tarjeta (todas las fases) | Mora Beltrán Santiago Sebastián |
 | Revisor del pull request y observador de la prueba | Acaro Ibujés Pedro Sebastián |
-| Issue del hallazgo | #6 |
-| Ramas | `feature/santiago-tarjetas-04-06` |
+| Issue del hallazgo | #6 · Issue de la incidencia (cerrada por el PR de incidencias) |
+| Ramas | `feature/santiago-tarjetas-04-06` · `fix/santiago-incidencias-04-06` |
 
 **1. Ruta normal y de error:** ver `prototipo/README.md`.
 
@@ -21,3 +21,6 @@
 **¿Cómo diferencia visualmente y semánticamente los tres estados?**
 
 Visualmente: Pendiente = chip ámbar con ◷ «Pendiente de confirmación»; Confirmado = chip verde con ✓; No confirmado = banner rojo con ✕; nunca solo color. Semánticamente: Pendiente usa `role="status"` y `aria-busy` en el botón; No confirmado usa `role="alert"` y recibe el foco; Confirmado se anuncia con el número de pedido.
+
+## Incidencia
+«Mostrar no confirmado, reintento seguro y conservar datos; evitar afirmar éxito no verificado.» — `send()` asigna un código de envío `S.key` reutilizado al reintentar; la cafetería devuelve el mismo pedido si el código ya existe; los estados Pendiente / Confirmado / No confirmado tienen ícono, texto y anuncio propios. Ver `docs/incidencia.md`.
