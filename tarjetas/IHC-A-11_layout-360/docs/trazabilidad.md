@@ -12,5 +12,6 @@ Requisito → flujo → pantalla → componente → wireframe → prototipo/evid
 | RF-04 | Todas | Barra de acciones | Anterior / Continuar al final | `wf-02-accion` | prototipo/v1 y v2 · evidencias/estados/ |
 | RNF-01 | Todas | Todas a 360 px | Una columna, sin scroll horizontal | `wf-01 a wf-04` | prototipo/v1 y v2 · evidencias/estados/ |
 | RNF-02 | Todas | Todas | Orden del DOM = orden visual | `wf-01 a wf-04` | prototipo/v1 y v2 · evidencias/estados/ |
+| **RF-07** | Todas a 360 px | Stepper compacto | Layout responsivo y acciones sticky | `wf-02-accion` | prototipo/v2 · evidencias/incidencia/ |
 
 Sitemap: `diagramas/sitemap.png` · User flow: `diagramas/user-flow.png` · Wireframes: `wireframes/`. El fallo de la tarjeta se cubre con **RF-02** y la restricción con **RNF-01**.

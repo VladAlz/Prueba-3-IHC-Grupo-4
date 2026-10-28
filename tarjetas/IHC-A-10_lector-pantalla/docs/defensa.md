@@ -4,8 +4,8 @@
 |---|---|
 | Responsable de la tarjeta (todas las fases) | Vinces Cueva Boris Yussef |
 | Revisor del pull request y observador de la prueba | González Álvarez Vladimir Humberto |
-| Issue del hallazgo | #10 |
-| Ramas | `feature/boris-tarjetas-10-12` |
+| Issue del hallazgo | #10 · Issue de la incidencia (cerrada por el PR de incidencias) |
+| Ramas | `feature/boris-tarjetas-10-12` · `fix/boris-incidencias-10-12` |
 
 **1. Ruta normal y de error:** ver `prototipo/README.md`.
 
@@ -21,3 +21,6 @@
 **Demuestre cómo conoce el paso actual sin depender del color.**
 
 Con NVDA: al llegar al Stepper se escucha «Participante, paso actual» (aria-current) y el texto «Paso 2 de 5 · Participante»; al pulsar Continuar se anuncia «Paso 3 de 5: Checklist previa» y el foco pasa al título. En escala de grises el paso se identifica igual (texto, número y ✓).
+
+## Incidencia
+«Añadir texto/estado accesible del paso activo y foco visible» — `aria-current="step"`, `live()` anuncia «Paso n de 5: Nombre» en `go()`, foco al título y anillo de foco de 3 px. Ver `docs/incidencia.md`.
