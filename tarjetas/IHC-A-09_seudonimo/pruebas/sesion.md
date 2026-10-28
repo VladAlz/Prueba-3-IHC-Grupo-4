@@ -41,4 +41,4 @@
 ![Curva antes y después](../diagramas/curva-despues.png)
 
 ## Prueba de la incidencia
-«Sustituir por código seudónimo y validar su formato» — Escribió «p7»; el mensaje indicó el formato y corrigió a P-07 (94 s, 1 errores). Cita: «Me dijo el formato, listo.» Evidencia: `evidencias/incidencia/`.
+«Sustituir por código anónimo y eliminar nombre del resumen sin perder métricas.» — Escribió «p7»; el mensaje indicó el formato y corrigió a P-07 (94 s, 1 errores). Cita: «Me dijo el formato, listo.» Evidencia: `evidencias/incidencia/`.

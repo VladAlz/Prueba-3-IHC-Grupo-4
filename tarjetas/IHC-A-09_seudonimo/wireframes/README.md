@@ -1,10 +1,11 @@
 # Wireframes Lo-Fi — IHC-A-09 · Dashboard UX · Participantes anónimos con código seudónimo
 
-| Wireframe | Pantalla | Componentes |
-|---|---|---|
-| `wf-01-inicio.png` | Inicio | Encabezado con estado de guardado, Stepper «Paso n de 5», card «Cómo funciona», tarea |
-| `wf-02-accion.png` | Acción | Card de la etapa clave: campos, checklist o registro |
-| `wf-03-error.png` | Error | Banner con lo que falta y enlace a la etapa |
-| `wf-04-confirmacion.png` | Confirmación | Código de sesión y resumen comprobable |
+| Wireframe | Pantalla |
+|---|---|
+| `wf-01-inicio.png` | Inicio |
+| `wf-02-accion.png` | Acción |
+| `wf-03-error.png` | Error |
+| `wf-04-confirmacion.png` | Confirmación |
+| `wf-05-incidencia.png` | **Ajuste por la incidencia «Dato personal inesperado»** |
 
-Una acción principal por pantalla (jerarquía), cards (Gestalt: región común), información crítica visible (carga cognitiva) y estados con ícono + texto.
+Una acción principal por pantalla, cards (Gestalt: región común), información crítica visible y estados con ícono + texto.

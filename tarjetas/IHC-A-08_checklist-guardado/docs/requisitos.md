@@ -13,4 +13,4 @@
 | **RF-07** | **Diferenciar «Guardando…», «✓ Guardado · hora» y «Sin cambios» en la cabecera y mostrar la barra de progreso general.** | Al marcar, la cabecera pasa por «Guardando…» y luego «✓ Guardado · 09:43». | Incidencia sorpresa |
 
 ## Cambio por la incidencia
-«Preservar checklist, diferenciar guardado de no guardado y mostrar progreso» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
+«Conservar valores, informar su estado de guardado y diferenciar pendiente/completo.» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
