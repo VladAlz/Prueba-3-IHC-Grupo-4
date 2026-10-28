@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 154 s | 2 | 2 (9 s en el paso 5; 6 s buscando qué faltaba) | Saltó al paso 5 y cerró la sesión sin marcar la checklist | «Me dejó llegar al final, pensé que ya estaba.» |
 | v2 | 131 s | 1 | 1 (12 s con «Continuar» deshabilitado) | No pudo saltar; tardó en entender qué faltaba | «¿Por qué no me deja seguir?» |
-| v2 con incidencia | 102 s | 0 | 0 | Leyó la lista de faltantes, marcó los obligatorios y avanzó | «Me dice exactamente qué falta.» |
+| v2 con incidencia | 109 s | 0 | 1 (lectura de la explicación) | Al pulsar Continuar leyó que faltaba la verificación del docente, la marcó y entró a Ejecución | «El paso dice que requiere verificación y me explica cuál.» |
 
 ## Observaciones con v1
 - Desde el paso 2 pulsó «Revisión y cierre» en el Stepper.
@@ -41,4 +41,4 @@
 ![Curva antes y después](../diagramas/curva-despues.png)
 
 ## Prueba de la incidencia
-«Bloquear avances inválidos con explicación y permitir volver sin perder marcas» — Leyó la lista de faltantes, marcó los obligatorios y avanzó (102 s, 0 errores). Cita: «Me dice exactamente qué falta.» Evidencia: `evidencias/incidencia/`.
+«Actualizar Stepper, regla de avance, retroalimentación contextual y navegación de retorno.» — Al pulsar Continuar leyó que faltaba la verificación del docente, la marcó y entró a Ejecución (109 s, 0 errores). Cita: «El paso dice que requiere verificación y me explica cuál.» Evidencia: `evidencias/incidencia/`.

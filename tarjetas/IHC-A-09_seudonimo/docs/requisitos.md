@@ -13,4 +13,4 @@
 | **RF-07** | **Validar el formato del código seudónimo (P-07: P, guion y 2–3 dígitos) al salir del campo y al continuar, con mensaje junto al campo.** | «ana» muestra «El código debe tener el formato P-07…». | Incidencia sorpresa |
 
 ## Cambio por la incidencia
-«Sustituir por código seudónimo y validar su formato» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
+«Sustituir por código anónimo y eliminar nombre del resumen sin perder métricas.» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

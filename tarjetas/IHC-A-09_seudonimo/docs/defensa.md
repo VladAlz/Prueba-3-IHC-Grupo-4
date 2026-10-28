@@ -23,4 +23,4 @@
 RNF-01 (privacidad) y RF-07 (formato del código). En docs/trazabilidad.md, RNF-01 → flujo «Registrar participante» → pantalla Participante → componente campo «Código» → wireframe 02 (acción); RF-07 → rama de error «Código inválido» → wireframe 03 (error).
 
 ## Incidencia
-«Sustituir por código seudónimo y validar su formato» — `missing(1)` valida `/^P-\d{2,3}$/`; `fieldErr()` muestra el error junto al campo con `aria-invalid` y `aria-describedby`. Ver `docs/incidencia.md`.
+«Sustituir por código anónimo y eliminar nombre del resumen sin perder métricas.» — `missing(1)` valida `/^P-\d{2,3}$/`; `fieldErr()` muestra el error junto al campo con `aria-invalid` y `aria-describedby`. Ver `docs/incidencia.md`.

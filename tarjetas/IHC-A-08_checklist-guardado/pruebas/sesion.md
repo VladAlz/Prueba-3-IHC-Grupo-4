@@ -41,4 +41,4 @@
 ![Curva antes y después](../diagramas/curva-despues.png)
 
 ## Prueba de la incidencia
-«Preservar checklist, diferenciar guardado de no guardado y mostrar progreso» — Vio «Guardando…» y «Guardado · hora» y la barra de progreso (91 s, 0 errores). Cita: «Sé cuándo ya se guardó.» Evidencia: `evidencias/incidencia/`.
+«Conservar valores, informar su estado de guardado y diferenciar pendiente/completo.» — Vio «Guardando…» y «Guardado · hora» y la barra de progreso (91 s, 0 errores). Cita: «Sé cuándo ya se guardó.» Evidencia: `evidencias/incidencia/`.

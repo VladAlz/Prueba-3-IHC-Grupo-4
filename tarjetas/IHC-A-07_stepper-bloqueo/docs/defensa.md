@@ -23,4 +23,4 @@
 Con el Stepper (pasos completados ✓, actual resaltado y «Paso n de 5 · Nombre» en texto), la barra de progreso, el estado de guardado y mensajes inmediatos al intentar avanzar; la persona siempre sabe dónde está, qué terminó y qué falta.
 
 ## Incidencia
-«Bloquear avances inválidos con explicación y permitir volver sin perder marcas» — `tryGo()` y «Continuar» llaman a `explain()`, que muestra la lista de faltantes con `role="alert"` y foco; las marcas se conservan al volver. Ver `docs/incidencia.md`.
+«Actualizar Stepper, regla de avance, retroalimentación contextual y navegación de retorno.» — `CHK` incluye «Verificación del docente antes de la ejecución» (obligatoria); el paso 4 se llama «Ejecución (registro)» y muestra «🔒 requiere verificación» mientras está bloqueado; `explain()` lista lo que falta con foco y las marcas se conservan al volver. Ver `docs/incidencia.md`.

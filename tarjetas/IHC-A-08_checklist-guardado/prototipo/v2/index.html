@@ -13,7 +13,9 @@ html,body{margin:0;background:#DDE3EC}
 body{min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:20px 10px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .frame{display:flex;flex-direction:column;width:940px;max-width:100%;background:var(--bg);border:1px solid var(--border);border-radius:16px;box-shadow:0 10px 30px rgba(27,35,51,.15);overflow:hidden;position:relative}
-.frame.narrow{width:360px}
+.frame.narrow{width:360px}.frame.w320{width:320px}
+.w320.narrow:not(.compact) .actions{flex-wrap:nowrap;overflow:hidden;justify-content:flex-start}.w320.narrow:not(.compact) .actions .btn{flex:none;min-width:200px}
+.lk{display:block;font-size:11.5px;font-weight:700;color:var(--warn)}
 .skip{position:absolute;left:10px;top:-60px;background:var(--blue);color:#fff;padding:10px 14px;border-radius:8px;z-index:50;font-weight:700;text-decoration:none}.skip:focus{top:10px}
 header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:14px 18px;background:#fff;border-bottom:1px solid var(--border)}
 .title{font-weight:800;font-size:17px}.title small{display:block;font-weight:600;color:var(--muted);font-size:12.5px}
@@ -120,6 +122,7 @@ html.wire .banner,html.wire .tag,html.wire .save{background:#eee!important}
   const V = VER === 'v1' ? 1 : VER === 'v2' ? 2 : 3;
   const qs = new URLSearchParams(location.search);
   if (qs.get('vista') === 'wireframe') document.documentElement.classList.add('wire');
+  if (qs.get('gris') === '1') document.documentElement.style.filter = 'grayscale(1)';
   const $ = s => document.querySelector(s);
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const live = m => { const l = $('#live'); l.textContent = ''; setTimeout(() => l.textContent = m, 30); };
@@ -143,6 +146,7 @@ html.wire .banner,html.wire .tag,html.wire .save{background:#eee!important}
   };
   const fr = $('#frame');
   if (F.narrow) fr.classList.add('narrow');
+  if (qs.get('ancho') === '320') fr.classList.add('w320');
   if (F.overlap) fr.classList.add('bug');
   if (CARD === '11' && V === 2) fr.classList.add('bug2');
   if (F.compact) fr.classList.add('compact');
@@ -152,7 +156,7 @@ html.wire .banner,html.wire .tag,html.wire .save{background:#eee!important}
   if (qs.has('prueba')) { $('#testpanel').hidden = false; $('#verlabel').textContent = 'Tarjeta IHC-A-' + CARD + ' · ' + (V === 3 ? 'v2.1 (incidencia)' : 'v' + V); }
   if (F.persist) $('#sim-int').hidden = false;
 
-  const STEPS = ['Plan y procedimiento', 'Participante', 'Checklist previa', 'Registro de la sesión', 'Revisión y cierre'];
+  const STEPS = ['Plan y procedimiento', 'Participante', 'Checklist previa', (CARD === '07' && V === 3) ? 'Ejecución (registro)' : 'Registro de la sesión', 'Revisión y cierre'];
   const CHK = [
     {id:'c1', t:'Consentimiento informado firmado', r:true, who:'Moderador'},
     {id:'c2', t:'Grabación de pantalla probada', r:true, who:'Observador'},
@@ -160,6 +164,7 @@ html.wire .banner,html.wire .tag,html.wire .save{background:#eee!important}
     {id:'c4', t:'Dispositivo de prueba cargado', r:false, who:'Observador'},
     {id:'c5', t:'Agua para la persona participante', r:false, who:'Asistente'},
   ];
+  if (CARD === '07' && V === 3) CHK.splice(3, 0, {id:'c6', t:'Verificación del docente antes de la ejecución', r:true, who:'Docente'});
   const fresh = () => ({step:0, maxDone:-1, tarea:'', moderador:'Moderador 1', pid:'', pname:'', perfil:'Estudiante', checks:{}, rows:[], draft:{tarea:'T1', res:'Éxito', err:0, t:'', obs:''}, finished:null, savedAt:null});
   let S = fresh();
   const KEY = 'dashux-ihc-a-' + CARD + '-' + VER;
@@ -206,7 +211,7 @@ html.wire .banner,html.wire .tag,html.wire .save{background:#eee!important}
       const status = F.colourOnly ? '' : `<span class="sr">${cur ? ' (paso actual)' : done ? ' (completado)' : locked ? ' (bloqueado)' : ''}</span>`;
       const aria = F.a11yStep ? `${cur ? 'aria-current="step"' : ''}` : '';
       const dis = (!F.freeJump && locked) ? 'aria-disabled="true"' : '';
-      return `<li class="${cur ? 'curli' : ''}"><button type="button" class="stp ${cur ? 'cur' : ''} ${done ? 'done' : ''}" data-go="${i}" ${aria} ${dis}><span class="n" aria-hidden="true">${icon}</span><span class="l">${esc(t)}</span>${status}</button></li>`;
+      return `<li class="${cur ? 'curli' : ''}"><button type="button" class="stp ${cur ? 'cur' : ''} ${done ? 'done' : ''}" data-go="${i}" ${aria} ${dis}><span class="n" aria-hidden="true">${icon}</span><span class="l">${esc(t)}${(CARD === '07' && V === 3 && i === 3 && locked) ? '<span class="lk"><span aria-hidden="true">🔒</span> requiere verificación</span>' : ''}</span>${status}</button></li>`;
     }).join('');
     $('#where').hidden = F.colourOnly;
     $('#where').textContent = `Paso ${S.step + 1} de 5 · ${STEPS[S.step]}`;
