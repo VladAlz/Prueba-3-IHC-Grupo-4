@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="es" data-card="08" data-ver="v1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard UX · IHC-A-08 · prototipo v1</title>
+<style>
+:root{--blue:#1F4E9A;--blue-h:#183E7A;--bg:#F4F6FA;--ink:#1B2333;--muted:#4A5568;--border:#D3DAE6;--soft:#EEF2F8;
+--ok:#1E7B3A;--ok-bg:#E6F4EA;--err:#B3261E;--err-bg:#FCE8E6;--warn:#7A4A00;--warn-bg:#FFF4E0;--info:#1F4E9A;--info-bg:#E8F0FD;--focus:#B3261E;--dis:#E6EAF0;--dis-tx:#5F6B7A;
+font-family:Inter,"Segoe UI",Roboto,system-ui,sans-serif;color:var(--ink)}
+*{box-sizing:border-box}[hidden]{display:none!important}
+html,body{margin:0;background:#DDE3EC}
+body{min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:20px 10px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.frame{display:flex;flex-direction:column;width:940px;max-width:100%;background:var(--bg);border:1px solid var(--border);border-radius:16px;box-shadow:0 10px 30px rgba(27,35,51,.15);overflow:hidden;position:relative}
+.frame.narrow{width:360px}
+.skip{position:absolute;left:10px;top:-60px;background:var(--blue);color:#fff;padding:10px 14px;border-radius:8px;z-index:50;font-weight:700;text-decoration:none}.skip:focus{top:10px}
+header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:14px 18px;background:#fff;border-bottom:1px solid var(--border)}
+.title{font-weight:800;font-size:17px}.title small{display:block;font-weight:600;color:var(--muted);font-size:12.5px}
+.save{font-size:12.5px;font-weight:700;border-radius:99px;padding:4px 10px;background:var(--soft);color:var(--muted)}
+.save.ok{background:var(--ok-bg);color:var(--ok)}.save.pend{background:var(--warn-bg);color:var(--warn)}
+nav.stepper{background:#fff;border-bottom:1px solid var(--border);padding:12px 18px}
+nav.stepper ol{list-style:none;margin:0;padding:0;display:flex;gap:6px}
+nav.stepper li{flex:1;min-width:0}
+.stp{width:100%;display:flex;align-items:center;gap:8px;background:none;border:0;padding:6px 4px;font:inherit;font-size:13px;color:var(--muted);text-align:left;cursor:pointer;border-radius:8px;min-height:44px}
+.stp .n{flex:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid var(--border);background:#fff;color:var(--muted)}
+.stp .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+.stp.done .n{background:var(--ok);border-color:var(--ok);color:#fff}
+.stp.cur .n{background:var(--blue);border-color:var(--blue);color:#fff}.stp.cur .l{color:var(--ink);font-weight:800}
+.stp[aria-disabled=true]{cursor:not-allowed;opacity:.7}
+.colouronly .stp.cur .n{background:#2E7DD7;border-color:#2E7DD7;color:#fff}.colouronly .stp.cur .l{color:#2E7DD7;font-weight:600}
+.colouronly .stp.done .n{background:#fff;border-color:var(--border);color:var(--muted)}
+.where{margin:8px 0 0;font-size:13px;font-weight:700;color:var(--blue)}
+.pbar{height:6px;border-radius:3px;background:var(--soft);overflow:hidden;margin-top:8px}.pbar span{display:block;height:100%;background:var(--blue)}
+main{padding:16px 18px;display:flex;flex-direction:column;gap:14px}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(27,35,51,.06);display:flex;flex-direction:column;gap:12px}
+h1{font-size:20px;margin:0}h1:focus,h1:focus-visible,.weakfocus h1:focus-visible{outline:none}
+h2{font-size:15px;margin:0}
+p{margin:0;line-height:1.45}.muted{color:var(--muted)}.small{font-size:13px}
+.field{display:flex;flex-direction:column;gap:6px}
+label,.lbl{font-weight:700;font-size:14px}
+input[type=text],input[type=number],select,textarea{font:inherit;font-size:15px;padding:9px 11px;border-radius:9px;border:1.5px solid #7D8797;background:#fff;min-height:44px;width:100%}
+textarea{min-height:80px;resize:vertical}
+input[aria-invalid=true]{border-color:var(--err);background:#FFF8F7}
+.hint{font-size:12.5px;color:var(--muted)}.ferr{font-size:13.5px;color:var(--err);font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cl{display:grid;grid-template-columns:28px 1fr auto;gap:8px 10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--soft)}
+.cl input{width:22px;height:22px;margin:0}
+.tag{font-size:12px;font-weight:700;border-radius:99px;padding:2px 8px;background:var(--soft);color:var(--muted);white-space:nowrap}.tag.req{background:var(--warn-bg);color:var(--warn)}
+.actions{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;padding:14px 18px;background:#fff;border-top:1px solid var(--border)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:10px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;padding:10px 18px;border:1.5px solid transparent}
+.btn.primary{background:var(--blue);color:#fff}.btn.primary:hover{background:var(--blue-h)}
+.btn.secondary{background:#fff;color:var(--blue);border-color:var(--blue)}
+.btn[disabled],.btn[disabled]:hover,.btn[aria-disabled=true]{background:var(--dis);color:var(--dis-tx);border-color:var(--dis);cursor:not-allowed}
+.link{background:none;border:0;color:var(--blue);text-decoration:underline;font:inherit;font-weight:700;cursor:pointer;min-height:40px;padding:6px 2px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+.weakfocus :focus-visible{outline:1px dotted #9AA5B4;outline-offset:0}
+.banner{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:12px;font-size:14px;line-height:1.4}
+.banner .ic{font-weight:900;flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px}
+.banner strong{display:block}.banner ul{margin:6px 0 0;padding-left:18px}
+.banner.info{background:var(--info-bg);color:var(--info)}.banner.info .ic{background:var(--info);color:#fff}
+.banner.ok{background:var(--ok-bg);color:var(--ok)}.banner.ok .ic{background:var(--ok);color:#fff}
+.banner.err{background:var(--err-bg);color:var(--err);border:1.5px solid var(--err)}.banner.err .ic{background:var(--err);color:#fff}
+.banner.warn{background:var(--warn-bg);color:var(--warn);border:1.5px solid #E2A94B}.banner.warn .ic{background:var(--warn);color:#fff}
+.banner:focus{outline:3px solid var(--focus);outline-offset:2px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--soft)}th{color:var(--muted);font-size:12.5px}
+.rv{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:start;padding:9px 0;border-bottom:1px solid var(--soft)}
+.ck{font-weight:900}.ck.y{color:var(--ok)}.ck.n{color:var(--err)}
+.spin{width:18px;height:18px;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.big{font-size:28px;font-weight:900;color:var(--blue)}
+.toast{position:absolute;right:16px;bottom:84px;background:var(--ink);color:#fff;border-radius:10px;padding:10px 14px;font-size:14px;z-index:30}
+.testpanel{position:fixed;left:12px;top:12px;width:220px;background:#fff;border:1px dashed #7D8797;border-radius:12px;padding:12px;font-size:13px;display:flex;flex-direction:column;gap:8px;z-index:60}
+@media (max-width:1500px){body{flex-direction:column;align-items:center}.testpanel{position:static;width:360px;margin-bottom:10px}}
+/* tarjeta 11: layout que se rompe a 360 px en v1/v2 */
+.narrow .grid2{grid-template-columns:1fr}
+.narrow nav.stepper ol{min-width:600px}
+.narrow nav.stepper{overflow:hidden}
+.narrow.bug main .card.step{margin-top:-78px;position:relative;z-index:5;max-height:420px;overflow:hidden}
+.domswap .actions{order:99}
+.narrow.compact nav.stepper ol{min-width:0}
+.narrow.compact .stp .l{display:none}.narrow.compact .stp.cur .l{display:inline;white-space:normal}
+.narrow.compact .stp{justify-content:center;padding:4px}.narrow.compact li.curli{flex:3}
+.narrow.compact .actions{position:sticky;bottom:0}
+.narrow .actions .btn{flex:1}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+html.wire .frame *{color:#333!important;border-color:#999!important;box-shadow:none!important;font-family:"Segoe Print","Comic Sans MS",cursive,sans-serif!important}
+html.wire .frame{background:#fff}
+html.wire .btn.primary,html.wire .stp.cur .n,html.wire .stp.done .n,html.wire .pbar span{background:#666!important;color:#fff!important}
+html.wire .banner,html.wire .tag,html.wire .save{background:#eee!important}
+</style>
+</head>
+<body>
+<aside class="testpanel" id="testpanel" hidden aria-label="Panel del moderador">
+  <b>Panel del moderador</b>
+  <label style="display:flex;gap:8px;font-weight:600"><input type="checkbox" id="sim-fail"> Fallo al guardar el cierre</label>
+  <button class="btn secondary" id="sim-int" type="button" hidden>Interrumpir sesión (recargar)</button>
+  <span class="muted small" id="verlabel"></span>
+</aside>
+<div class="frame" id="frame">
+  <a class="skip" href="#main" id="skip">Saltar al contenido</a>
+  <header class="top">
+    <div class="title">Usability Test Plan · Checkout simplificado<small>Dashboard de la prueba · Sesión 3</small></div>
+    <span class="save" id="save" role="status">—</span>
+  </header>
+  <nav class="stepper" id="stepper" aria-label="Etapas de la prueba"><ol id="steps"></ol><p class="where" id="where"></p><div class="pbar" id="pbar" hidden aria-hidden="true"><span></span></div></nav>
+  <div class="sr" aria-live="polite" id="live"></div>
+  <main id="main" tabindex="-1">
+    <div id="resume"></div>
+    <div id="stepbox"></div>
+  </main>
+  <div class="actions" id="actions">
+    <button class="btn secondary" id="prev" type="button">Anterior</button>
+    <button class="btn primary" id="next" type="button">Continuar</button>
+  </div>
+  <div class="toast" id="toast" role="status" hidden></div>
+</div>
+<script>
+(() => {
+  const CARD = document.documentElement.dataset.card, VER = document.documentElement.dataset.ver;
+  const V = VER === 'v1' ? 1 : VER === 'v2' ? 2 : 3;
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('vista') === 'wireframe') document.documentElement.classList.add('wire');
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const live = m => { const l = $('#live'); l.textContent = ''; setTimeout(() => l.textContent = m, 30); };
+  const F = {
+    freeJump: CARD === '07' && V === 1,
+    explain: CARD !== '07' || V === 3,
+    lostChecks: CARD === '08' && V === 1,
+    saveState: CARD === '08' && V === 3,
+    realName: CARD === '09' && V === 1,
+    codeFormat: CARD === '09' && V === 3,
+    colourOnly: CARD === '10' && V === 1,
+    a11yStep: CARD !== '10' || V === 3,
+    weakFocus: CARD === '10' && V < 3,
+    narrow: CARD === '11',
+    overlap: CARD === '11' && V === 1,
+    compact: CARD === '11' && V === 3,
+    falseSuccess: CARD === '12' && V === 1,
+    reviewGate: CARD !== '12' || V >= 2,
+    fullReview: CARD === '12' && V === 3,
+    persist: CARD === '12',
+  };
+  const fr = $('#frame');
+  if (F.narrow) fr.classList.add('narrow');
+  if (F.overlap) fr.classList.add('bug');
+  if (CARD === '11' && V === 2) fr.classList.add('bug2');
+  if (F.compact) fr.classList.add('compact');
+  if (CARD === '11' && V < 3) { fr.classList.add('domswap'); fr.insertBefore($('#actions'), $('#main')); }
+  if (F.colourOnly) $('#stepper').classList.add('colouronly');
+  if (F.weakFocus) document.body.classList.add('weakfocus');
+  if (qs.has('prueba')) { $('#testpanel').hidden = false; $('#verlabel').textContent = 'Tarjeta IHC-A-' + CARD + ' · ' + (V === 3 ? 'v2.1 (incidencia)' : 'v' + V); }
+  if (F.persist) $('#sim-int').hidden = false;
+
+  const STEPS = ['Plan y procedimiento', 'Participante', 'Checklist previa', 'Registro de la sesión', 'Revisión y cierre'];
+  const CHK = [
+    {id:'c1', t:'Consentimiento informado firmado', r:true, who:'Moderador'},
+    {id:'c2', t:'Grabación de pantalla probada', r:true, who:'Observador'},
+    {id:'c3', t:'Guion del moderador a la mano', r:true, who:'Moderador'},
+    {id:'c4', t:'Dispositivo de prueba cargado', r:false, who:'Observador'},
+    {id:'c5', t:'Agua para la persona participante', r:false, who:'Asistente'},
+  ];
+  const fresh = () => ({step:0, maxDone:-1, tarea:'', moderador:'Moderador 1', pid:'', pname:'', perfil:'Estudiante', checks:{}, rows:[], draft:{tarea:'T1', res:'Éxito', err:0, t:'', obs:''}, finished:null, savedAt:null});
+  let S = fresh();
+  const KEY = 'dashux-ihc-a-' + CARD + '-' + VER;
+  const store = { get(){ try { return JSON.parse(localStorage.getItem(KEY)); } catch(e){ return null; } }, set(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }, del(){ try { localStorage.removeItem(KEY); } catch(e){} } };
+  const now = () => '09:' + String(40 + (S.rows.length + Object.keys(S.checks).length) % 20).padStart(2, '0');
+  let dirty = false, saveT;
+  function markSaved() {
+    const sv = $('#save');
+    if (F.saveState) {
+      dirty = true; sv.className = 'save pend'; sv.textContent = 'Guardando…';
+      clearTimeout(saveT); saveT = setTimeout(() => { dirty = false; S.savedAt = now(); sv.className = 'save ok'; sv.textContent = '✓ Guardado · ' + S.savedAt; }, 700);
+    } else if (F.persist) { store.set(S); sv.className = 'save ok'; sv.textContent = '✓ Progreso guardado'; }
+    else { sv.className = 'save ok'; sv.textContent = '✓ Guardado'; }
+  }
+  if (F.saveState) { $('#save').textContent = 'Sin cambios'; }
+  else $('#save').textContent = F.persist ? 'Guarda automáticamente' : '✓ Guardado';
+
+  // ---------- requisitos de cada etapa
+  const reqCount = () => CHK.filter(c => c.r).length;
+  const reqDone = () => CHK.filter(c => c.r && S.checks[c.id]).length;
+  function missing(i) {
+    const m = [];
+    if (i === 0 && !S.tarea) m.push('Selecciona la tarea que se evaluará.');
+    if (i === 1) {
+      if (F.realName) { if (!S.pname.trim()) m.push('Escribe el nombre completo de la persona participante.'); }
+      else if (!S.pid.trim()) m.push('Escribe el código de la persona participante.');
+      else if (F.codeFormat && !/^P-\d{2,3}$/.test(S.pid.trim())) m.push('El código debe tener el formato P-07 (P, guion y 2 o 3 dígitos).');
+    }
+    if (i === 2) CHK.filter(c => c.r && !S.checks[c.id]).forEach(c => m.push(`Marca «${c.t}» (obligatorio).`));
+    if (i === 3 && !S.rows.length) m.push('Agrega al menos un registro de la sesión.');
+    return m;
+  }
+  const complete = i => !missing(i).length;
+  const advOk = i => (CARD === '12' && i === 2) ? true : complete(i);
+  const canVisit = i => F.freeJump ? true : i <= S.step || STEPS.slice(0, i).every((_, k) => advOk(k));
+
+  // ---------- stepper
+  function renderStepper() {
+    const ol = $('#steps');
+    ol.innerHTML = STEPS.map((t, i) => {
+      const cur = i === S.step, done = i < S.step && complete(i);
+      const locked = !canVisit(i);
+      const icon = (F.colourOnly) ? (i + 1) : done ? '✓' : (i + 1);
+      const status = F.colourOnly ? '' : `<span class="sr">${cur ? ' (paso actual)' : done ? ' (completado)' : locked ? ' (bloqueado)' : ''}</span>`;
+      const aria = F.a11yStep ? `${cur ? 'aria-current="step"' : ''}` : '';
+      const dis = (!F.freeJump && locked) ? 'aria-disabled="true"' : '';
+      return `<li class="${cur ? 'curli' : ''}"><button type="button" class="stp ${cur ? 'cur' : ''} ${done ? 'done' : ''}" data-go="${i}" ${aria} ${dis}><span class="n" aria-hidden="true">${icon}</span><span class="l">${esc(t)}</span>${status}</button></li>`;
+    }).join('');
+    $('#where').hidden = F.colourOnly;
+    $('#where').textContent = `Paso ${S.step + 1} de 5 · ${STEPS[S.step]}`;
+    const pb = $('#pbar'); pb.hidden = !(F.saveState || F.compact || CARD === '07' && V === 3);
+    pb.querySelector('span').style.width = (STEPS.filter((_, i) => complete(i) && i < 4).length / 4 * 100) + '%';
+    ol.querySelectorAll('[data-go]').forEach(b => b.onclick = () => tryGo(+b.dataset.go));
+  }
+  function tryGo(i) {
+    if (i === S.step) return;
+    if (i < S.step || F.freeJump) return go(i);
+    if (CARD === '07' && V === 2) { if (!canVisit(i)) return; return go(i); }
+    if (!canVisit(i)) { const first = STEPS.findIndex((_, k) => k < i && !advOk(k)); explain(first, `No puedes ir a «${STEPS[i]}» todavía.`); return; }
+    go(i);
+  }
+
+  // ---------- etapas
+  function go(i, opts = {}) {
+    if (F.lostChecks && S.step === 2 && i !== 2) { S.checks = {}; }
+    S.step = i; S.maxDone = Math.max(S.maxDone, i - 1);
+    if (F.persist) store.set(S);
+    render();
+    if (!opts.silent) {
+      const h = $('#stepbox h1'); if (h) h.focus();
+      if (F.a11yStep) live(`Paso ${i + 1} de 5: ${STEPS[i]}.`);
+    }
+  }
+  function render() {
+    renderStepper(); $('#stepbox').innerHTML = ''; $('#resume').innerHTML = resumeHTML();
+    const card = document.createElement('section'); card.className = 'card step'; card.setAttribute('aria-labelledby', 'h-step');
+    card.innerHTML = [step0, step1, step2, step3, step4][S.step]();
+    $('#stepbox').appendChild(card);
+    wire[S.step]();
+    $('#prev').disabled = S.step === 0;
+    const nx = $('#next');
+    nx.textContent = S.step === 4 ? 'Finalizar sesión' : 'Continuar';
+    nx.disabled = false; nx.removeAttribute('aria-describedby');
+    if (CARD === '07' && V === 2 && S.step < 4 && !complete(S.step)) nx.disabled = true;
+    if (S.step === 4 && F.fullReview && !allOk()) { nx.disabled = true; nx.setAttribute('aria-describedby', 'rv-status'); }
+    const rb = $('#resume-btn'); if (rb) rb.onclick = () => { $('#resume').innerHTML = ''; S.resumed = true; go(S.step); };
+    const rn = $('#resume-new'); if (rn) rn.onclick = () => { store.del(); S = fresh(); S.resumed = true; go(0); };
+  }
+  function resumeHTML() {
+    if (!F.persist || S.resumed || !S.restored) return '';
+    return `<div class="banner info" role="region" aria-label="Prueba interrumpida"><span class="ic" aria-hidden="true">i</span><div><strong>Retomaste una prueba interrumpida</strong>Se recuperaron los pasos finalizados: ${STEPS.filter((_, i) => i < S.step && complete(i)).map(esc).join(', ') || 'ninguno'}. Estás en el paso ${S.step + 1}.
+      <div style="margin-top:6px;display:flex;gap:12px;flex-wrap:wrap"><button class="link" type="button" id="resume-btn">Continuar donde quedé</button><button class="link" type="button" id="resume-new">Empezar de nuevo</button></div></div></div>`;
+  }
+  const H = (t, sub) => `<div><h1 id="h-step" tabindex="-1">${esc(t)}</h1>${sub ? `<p class="muted small" style="margin-top:4px">${sub}</p>` : ''}</div>`;
+  function step0() {
+    return H('Plan y procedimiento', 'Define qué se evaluará antes de iniciar.') + `
+    <div class="banner info"><span class="ic" aria-hidden="true">i</span><div><strong>Cómo funciona esta sesión</strong>1) Plan · 2) Participante · 3) Checklist previa · 4) Registro de tareas · 5) Revisión y cierre. Duración estimada: 20 min. Los datos se guardan al avanzar.</div></div>
+    <div class="grid2"><div class="field"><label for="tarea">Tarea a evaluar <span aria-hidden="true">*</span></label><select id="tarea" aria-required="true"><option value="">Selecciona…</option><option>Pagar un pedido con tarjeta guardada</option><option>Cambiar la dirección de entrega</option><option>Aplicar un cupón de descuento</option></select></div>
+    <div class="field"><label for="mod">Moderador</label><input type="text" id="mod" value="${esc(S.moderador)}"></div></div>
+    <div id="msg"></div>`;
+  }
+  function step1() {
+    if (F.realName) return H('Participante', 'Datos de la persona que hará la prueba.') + `
+      <div class="grid2"><div class="field"><label for="pname">Nombre completo del participante <span aria-hidden="true">*</span></label><input type="text" id="pname" value="${esc(S.pname)}" autocomplete="off" aria-required="true"><span class="hint">Obligatorio. Se mostrará en las evidencias.</span></div>
+      <div class="field"><label for="perfil">Perfil</label><select id="perfil"><option>Estudiante</option><option>Docente</option><option>Personal administrativo</option></select></div></div><div id="msg"></div>`;
+    return H('Participante', 'Identifica a la persona con un código; no uses su nombre real.') + `
+      <div class="grid2"><div class="field"><label for="pid">Código de participante <span aria-hidden="true">*</span></label><input type="text" id="pid" value="${esc(S.pid)}" autocomplete="off" aria-required="true" aria-describedby="pid-hint pid-err" ${F.codeFormat ? 'placeholder="P-07"' : ''}><span class="hint" id="pid-hint">${F.codeFormat ? 'Formato P-07: letra P, guion y 2 o 3 dígitos. No escribas nombres.' : 'Ejemplo: P-07. No escribas nombres.'}</span><span class="ferr" id="pid-err" hidden></span></div>
+      <div class="field"><label for="perfil">Perfil</label><select id="perfil"><option>Estudiante</option><option>Docente</option><option>Personal administrativo</option></select></div></div>
+      <div class="banner ok"><span class="ic" aria-hidden="true">✓</span><div><strong>Privacidad</strong>Las evidencias y el resumen solo muestran el código.</div></div><div id="msg"></div>`;
+  }
+  function step2() {
+    const n = Object.values(S.checks).filter(Boolean).length;
+    return H('Checklist previa', 'Marca lo que ya está listo. Los obligatorios bloquean el avance.') + `
+      <p class="small" style="font-weight:700" id="chk-prog">${n} de ${CHK.length} listos · ${reqDone()} de ${reqCount()} obligatorios</p>
+      <div role="group" aria-labelledby="h-step">${CHK.map(c => `<div class="cl"><input type="checkbox" id="${c.id}" ${S.checks[c.id] ? 'checked' : ''}><label for="${c.id}">${esc(c.t)}<span class="hint" style="display:block;font-weight:500">Responsable: ${c.who}</span></label><span class="tag ${c.r ? 'req' : ''}">${c.r ? 'Obligatorio' : 'Opcional'}</span></div>`).join('')}</div>
+      <div id="msg"></div>`;
+  }
+  function step3() {
+    const d = S.draft;
+    return H('Registro de la sesión', 'Registra cada tarea observada: resultado, errores y observaciones.') + `
+      <div class="grid2">
+        <div class="field"><label for="r-t">Etapa / tarea</label><select id="r-t">${['T1','T2','T3'].map(x => `<option ${d.tarea === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
+        <div class="field"><label for="r-res">Resultado</label><select id="r-res">${['Éxito','Parcial','No completada'].map(x => `<option ${d.res === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
+        <div class="field"><label for="r-err">Errores observados</label><input type="number" id="r-err" min="0" max="20" value="${d.err}"></div>
+        <div class="field"><label for="r-time">Tiempo (s)</label><input type="number" id="r-time" min="0" value="${esc(d.t)}"></div>
+      </div>
+      <div class="field"><label for="r-obs">Observaciones</label><textarea id="r-obs" placeholder="Describe lo que viste, no lo que interpretas.">${esc(d.obs)}</textarea></div>
+      <div><button class="btn secondary" id="r-add" type="button">Agregar registro</button></div>
+      <div id="rows">${rowsTable()}</div><div id="msg"></div>`;
+  }
+  function rowsTable() {
+    if (!S.rows.length) return '<p class="small muted">Aún no hay registros.</p>';
+    const who = F.realName ? (S.pname || '—') : (S.pid || '—');
+    return `<table><caption class="sr">Registros de la sesión</caption><thead><tr><th>${F.realName ? 'Participante' : 'Código'}</th><th>Tarea</th><th>Resultado</th><th>Errores</th><th>Tiempo</th></tr></thead><tbody>${S.rows.map(r => `<tr><td>${esc(who)}</td><td>${r.tarea}</td><td>${r.res}</td><td>${r.err}</td><td>${r.t ? r.t + ' s' : '—'}</td></tr>`).join('')}</tbody></table>`;
+  }
+  const allOk = () => [0, 1, 2, 3].every(complete);
+  function step4() {
+    const who = F.realName ? S.pname : S.pid;
+    if (!F.fullReview) return H('Revisión y cierre', 'Revisa el resumen. Puedes editar cualquier etapa antes de finalizar.') + `
+      <div class="rv"><span></span><div><b>Tarea</b><div class="small muted">${esc(S.tarea || '—')}</div></div><button class="link" type="button" data-ed="0">Editar</button></div>
+      <div class="rv"><span></span><div><b>Participante</b><div class="small muted">${esc(who || '—')}</div></div><button class="link" type="button" data-ed="1">Editar</button></div>
+      <div class="rv"><span></span><div><b>Checklist</b><div class="small muted">${reqDone()} de ${reqCount()} obligatorios</div></div><button class="link" type="button" data-ed="2">Editar</button></div>
+      <div class="rv"><span></span><div><b>Registros</b><div class="small muted">${S.rows.length} registro(s)</div></div><button class="link" type="button" data-ed="3">Editar</button></div>
+      <div id="fin-state"></div><div id="msg"></div>`;
+    const it = (ok, t, d, e) => `<div class="rv"><span class="ck ${ok ? 'y' : 'n'}" aria-hidden="true">${ok ? '✓' : '✕'}</span><div><b>${t}</b> <span class="sr">${ok ? 'completo' : 'pendiente'}</span><div class="small muted">${d}</div></div><button class="link" type="button" data-ed="${e}">Editar</button></div>`;
+    const ok = allOk();
+    return H('Revisión y cierre', 'Comprueba cada punto antes de finalizar. Solo se cierra si todo está completo.') + `
+      <div class="banner ${ok ? 'ok' : 'warn'}" id="rv-status" role="status"><span class="ic" aria-hidden="true">${ok ? '✓' : '!'}</span><div><strong>${ok ? 'Todo listo para cerrar' : 'Aún no se puede cerrar la sesión'}</strong>${ok ? 'Revisaste las 4 etapas.' : 'Completa los puntos marcados con ✕.'}</div></div>
+      ${it(complete(0), 'Tarea', esc(S.tarea || 'Sin seleccionar'), 0)}
+      ${it(complete(1), 'Participante', esc(who || 'Sin código'), 1)}
+      ${CHK.filter(c => c.r).map(c => it(!!S.checks[c.id], c.t, 'Obligatorio · ' + c.who, 2)).join('')}
+      ${it(complete(3), 'Registros', S.rows.length + ' registro(s): ' + S.rows.map(r => r.tarea + ' ' + r.res).join(', '), 3)}
+      <div id="fin-state"></div><div id="msg"></div>`;
+  }
+  const wire = [
+    () => { const t = $('#tarea'); t.value = S.tarea; t.onchange = () => { S.tarea = t.value; markSaved(); renderStepper(); refreshNext(); }; $('#mod').oninput = e => { S.moderador = e.target.value; }; },
+    () => {
+      if (F.realName) { $('#pname').oninput = e => { S.pname = e.target.value; markSaved(); refreshNext(); }; }
+      else { const p = $('#pid'); p.oninput = e => { S.pid = e.target.value.toUpperCase(); if (e.target.value !== S.pid) e.target.value = S.pid; markSaved(); clearFieldErr(); refreshNext(); };
+        if (F.codeFormat) p.onblur = () => { const m = missing(1); if (S.pid && m.length) fieldErr(m[0]); }; }
+      $('#perfil').value = S.perfil; $('#perfil').onchange = e => S.perfil = e.target.value;
+    },
+    () => { CHK.forEach(c => { const el = $('#' + c.id); el.onchange = () => { S.checks[c.id] = el.checked; markSaved(); $('#chk-prog').textContent = `${Object.values(S.checks).filter(Boolean).length} de ${CHK.length} listos · ${reqDone()} de ${reqCount()} obligatorios`; if (F.lostChecks) toast('✓ Guardado'); renderStepper(); refreshNext(); }; }); },
+    () => {
+      const d = S.draft;
+      $('#r-t').onchange = e => d.tarea = e.target.value; $('#r-res').onchange = e => d.res = e.target.value;
+      $('#r-err').oninput = e => d.err = +e.target.value || 0; $('#r-time').oninput = e => d.t = e.target.value; $('#r-obs').oninput = e => d.obs = e.target.value;
+      $('#r-add').onclick = () => { S.rows.push({...d}); S.draft = {tarea:['T1','T2','T3'][Math.min(2, S.rows.length)], res:'Éxito', err:0, t:'', obs:''}; markSaved(); render(); $('#r-add').focus(); live(`Registro agregado. ${S.rows.length} en total.`); };
+    },
+    () => { document.querySelectorAll('[data-ed]').forEach(b => b.onclick = () => go(+b.dataset.ed)); },
+  ];
+  function refreshNext() { if (CARD === '07' && V === 2 && S.step < 4) $('#next').disabled = !complete(S.step); }
+  function fieldErr(m) { const e = $('#pid-err'); if (!e) return; e.hidden = false; e.textContent = m; $('#pid').setAttribute('aria-invalid', 'true'); }
+  function clearFieldErr() { const e = $('#pid-err'); if (!e) return; e.hidden = true; $('#pid').removeAttribute('aria-invalid'); }
+  function explain(i, head) {
+    const m = missing(i); if (S.step !== i) go(i, {silent:true});
+    const box = $('#msg');
+    box.innerHTML = `<div class="banner err" role="alert" tabindex="-1" id="why"><span class="ic" aria-hidden="true">!</span><div><strong>${esc(head || 'Falta completar este paso')}</strong>Para continuar en «${esc(STEPS[i])}»:<ul>${m.map(x => `<li>${esc(x)}</li>`).join('')}</ul>Tus marcas y datos se conservan.</div></div>`;
+    $('#why').focus();
+    if (i === 1 && F.codeFormat && S.pid) fieldErr(m[0]);
+  }
+  function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 1800); }
+
+  $('#prev').onclick = () => { if (S.step > 0) go(S.step - 1); };
+  $('#next').onclick = () => {
+    if (S.step < 4) {
+      if (F.freeJump || (CARD === '07' && V === 2)) { if (CARD === '07' && V === 2 && !complete(S.step)) return; return go(S.step + 1); }
+      if (!advOk(S.step)) return explain(S.step);
+      return go(S.step + 1);
+    }
+    finish();
+  };
+  function finish() {
+    const box = $('#fin-state'), nx = $('#next');
+    if (!F.falseSuccess && F.reviewGate && !allOk()) {
+      const first = [0, 1, 2, 3].find(i => !complete(i));
+      $('#msg').innerHTML = `<div class="banner err" role="alert" tabindex="-1" id="why"><span class="ic" aria-hidden="true">!</span><div><strong>No se puede finalizar la sesión</strong>Falta completar: ${[0,1,2,3].filter(i => !complete(i)).map(i => esc(STEPS[i])).join(', ')}.<ul>${missing(first).map(x => `<li>${esc(x)}</li>`).join('')}</ul><button class="link" type="button" id="fix">Ir a «${esc(STEPS[first])}»</button></div></div>`;
+      $('#fix').onclick = () => go(first); $('#why').focus(); return;
+    }
+    nx.disabled = true; nx.setAttribute('aria-busy', 'true'); nx.innerHTML = '<span class="spin" aria-hidden="true"></span> Guardando cierre…'; $('#prev').disabled = true;
+    box.innerHTML = '<p class="small muted" role="status">Guardando el cierre de la sesión… no cierres la ventana.</p>';
+    const fail = $('#sim-fail').checked;
+    setTimeout(() => {
+      nx.removeAttribute('aria-busy'); nx.disabled = false; $('#prev').disabled = false;
+      if (fail) {
+        $('#sim-fail').checked = false; nx.textContent = 'Reintentar cierre'; box.innerHTML = '';
+        $('#msg').innerHTML = `<div class="banner err" role="alert" tabindex="-1" id="why"><span class="ic" aria-hidden="true">✕</span><div><strong>No se pudo guardar el cierre</strong>La sesión sigue abierta y tus datos se conservan. Revisa la conexión y reintenta.</div></div>`;
+        $('#why').focus(); return;
+      }
+      done();
+    }, 1300);
+  }
+  function done() {
+    S.finished = 'S-2026-0' + (14 + S.rows.length); if (F.persist) store.del();
+    const who = F.realName ? S.pname : S.pid;
+    renderStepper(); $('#where').textContent = 'Sesión finalizada';
+    $('#actions').hidden = true;
+    const proof = F.fullReview || F.reviewGate ? `<table><caption class="sr">Resumen comprobable</caption><tbody>
+      <tr><th>Tarea</th><td>${esc(S.tarea || '—')}</td></tr><tr><th>${F.realName ? 'Participante' : 'Código'}</th><td>${esc(who || '—')}</td></tr>
+      <tr><th>Checklist obligatoria</th><td>${reqDone()} de ${reqCount()}</td></tr><tr><th>Registros</th><td>${S.rows.length}</td></tr></tbody></table>` : '';
+    $('#stepbox').innerHTML = `<section class="card" aria-labelledby="h-step"><div class="banner ok" role="status"><span class="ic" aria-hidden="true">✓</span><div><strong>Sesión finalizada</strong>${F.falseSuccess ? 'La prueba quedó cerrada.' : 'El cierre se guardó y se verificó la checklist obligatoria.'}</div></div><h1 id="h-step" tabindex="-1">Código de sesión <span class="big">${S.finished}</span></h1>${proof}<button class="btn secondary" id="again" type="button">Nueva sesión</button></section>`;
+    $('#again').onclick = () => { S = fresh(); $('#actions').hidden = false; go(0); };
+    $('#h-step').focus(); live('Sesión finalizada. Código ' + S.finished + '.');
+  }
+  $('#sim-int').onclick = () => { store.set(S); location.reload(); };
+
+  // restaurar prueba interrumpida (tarjeta 12)
+  if (F.persist) { const saved = store.get(); if (saved && !qs.has('nuevo')) { S = Object.assign(fresh(), saved, {restored:true, resumed:false}); } }
+  const st = qs.get('paso'); if (st) S.step = +st;
+  go(S.step, {silent:true});
+  window.__dash = {get S(){return S;}, go, F, complete, missing};
+})();
+</script>
+</body>
+</html>
