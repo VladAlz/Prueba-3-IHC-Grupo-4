@@ -23,4 +23,4 @@
 Demostración: Tab → «Saltar al contenido» → Enter en «Ver menú» → Enter en «Agregar Café americano» y «Agregar Sánduche» → Tab a «Mi pedido» → Enter en «Aumentar cantidad de Café» → Enter en «Quitar Sánduche» → Enter en «Sí, quitar» (o Escape para cancelar) → el foco queda en el siguiente «Quitar» → Tab a «Revisar pedido» → Enter en «Confirmar».
 
 ## Incidencia
-«Hacer identificables y operables los controles; restaurar foco después de quitar» — Todos los controles (−, +, cantidad, Info) tienen nombre propio; `doQuit()` mueve el foco al «Quitar» del siguiente producto o al título y anuncia «X quitado. Total $Y». Ver `docs/incidencia.md`.
+«Anunciar producto eliminado, devolver foco a control pertinente y permitir Deshacer simulado.» — `doQuit()` anuncia el producto eliminado con `live()`, mueve el foco al «Quitar» del siguiente producto (o al título) y el aviso ofrece «Deshacer», que restaura el producto y devuelve el foco a su botón; todos los controles tienen nombre accesible. Ver `docs/incidencia.md`.

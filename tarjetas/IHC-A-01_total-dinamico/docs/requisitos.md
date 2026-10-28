@@ -10,7 +10,7 @@
 | RF-04 | Mostrar el estado del envío: procesando, error con reintento y éxito con número de pedido. | Se ven las tres pantallas; el botón se bloquea mientras envía. | Tarea crítica |
 | RNF-01 | La tarea completa cabe en 360 px y se termina en menos de 3 minutos. | Sin desplazamiento horizontal; tiempo de la prueba < 180 s. | Restricción de la tarjeta |
 | RNF-02 | Operable con teclado y foco visible (WCAG 2.1.1, 2.4.7). | Toda la tarea se completa con Tab/Enter; anillo de foco de 3 px. | Accesibilidad (WCAG 2.2) |
-| **RF-07** | **Anunciar cada cambio de total (aria-live) e impedir confirmar si el importe del botón no coincide con el total actual.** | Al editar en «Revisa y confirma» el botón y el total cambian a la vez; si difieren, se bloquea y se pide revisar. | Incidencia sorpresa |
+| **RF-07** | **Recalcular subtotales y total en cada edición, mostrar la diferencia (antes → ahora) y exigir una nueva revisión del total antes de confirmar.** | Con 2 → 3 cafés en «Revisa y confirma» aparece «Antes $5,75 → ahora $7,25 (+$1,50)» y «Confirmar» queda bloqueado hasta pulsar «Revisé el nuevo total». | Incidencia sorpresa |
 
 ## Cambio por la incidencia
-«Recalcular el total y anunciar cada cambio; impedir confirmar un importe obsoleto» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
+«Implementar actualización de subtotales y total, identificar diferencia, pedir nueva revisión antes de confirmar.» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

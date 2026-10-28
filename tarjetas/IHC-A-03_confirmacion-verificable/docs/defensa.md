@@ -23,4 +23,4 @@
 Separando tres estados: el clic solo inicia «Enviando…» (botón bloqueado, barra, sin palabras de éxito); el éxito solo aparece cuando llega la respuesta y siempre con evidencia verificable (código, desglose y «Recibido por la cafetería»). Un clic efectuado nunca muestra «Listo».
 
 ## Incidencia
-«Mostrar un identificador simulado, desglose y estado inequívoco de pedido recibido» — `renderOk()` muestra el estado «✓ Recibido por la cafetería · hora», el código de retiro `code()` (sin datos personales) y el desglose; «Salir y borrar este pedido» limpia la pantalla. Ver `docs/incidencia.md`.
+«Deshabilitar repetición, mostrar pendiente y resolverlo a confirmado o no confirmado sin duplicar.» — `send()` bloquea el botón (`aria-busy`) y asigna un código de envío; durante la espera muestra el chip «Pendiente de confirmación» (`role="status"`); al responder pasa a «✓ Recibido por la cafetería» o a «No confirmado» con reintento seguro; el registro con el mismo código no se duplica. Ver `docs/incidencia.md`.

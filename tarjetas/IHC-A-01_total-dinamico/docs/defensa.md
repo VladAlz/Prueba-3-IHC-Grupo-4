@@ -23,4 +23,4 @@
 Cambia el tramo «Editar cantidad → Recalcular total → Revisar» de la rama de editar: después de cada edición se recalcula y anuncia el total, y desde «Revisa y confirma» se agregó la decisión «¿El importe mostrado coincide con el total?»; si no coincide, regresa a revisar en lugar de enviar.
 
 ## Incidencia
-«Recalcular el total y anunciar cada cambio; impedir confirmar un importe obsoleto» — En `renderReview()` el botón «Confirmar · $X» se actualiza en cada edición y `live()` anuncia «Total actualizado»; en el clic de confirmar se compara el importe mostrado con `total()` y, si difieren, se bloquea con «El total cambió». Ver `docs/incidencia.md`.
+«Implementar actualización de subtotales y total, identificar diferencia, pedir nueva revisión antes de confirmar.» — En `renderReview()` se guarda el total revisado (`S.revBase`); si una edición lo cambia, aparece el aviso con la diferencia, `#confirm` se deshabilita (`aria-describedby`) y solo se habilita al pulsar «Revisé el nuevo total». Ver `docs/incidencia.md`.

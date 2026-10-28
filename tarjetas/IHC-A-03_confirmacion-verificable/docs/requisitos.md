@@ -10,7 +10,7 @@
 | RF-04 | Permitir salir y borrar el pedido de la pantalla al terminar. | «Salir y borrar este pedido» vuelve al inicio sin rastro del pedido. | Tarea crítica |
 | RNF-01 | No solicitar ni mostrar datos personales (teléfono, cédula, nombre). | Ningún campo pide datos personales; el identificador no los contiene. | Restricción de la tarjeta |
 | RNF-02 | Operable con teclado, foco visible y estados anunciados. | La confirmación se anuncia con su número. | Accesibilidad (WCAG 2.2) |
-| **RF-07** | **Mostrar un código de retiro sin datos personales, el desglose (productos, subtotal, recargo, total) y el estado inequívoco «Recibido por la cafetería» con hora.** | La pantalla final muestra «✓ Recibido por la cafetería · 09:42», código CF-XXX y desglose. | Incidencia sorpresa |
+| **RF-07** | **Tras confirmar, bloquear la repetición y mostrar el estado Pendiente hasta resolverlo en Confirmado o No confirmado; reintentar usa el mismo código de envío y no duplica.** | Con red lenta (8 s) y doble clic, el botón queda bloqueado, se ve «Pendiente de confirmación» y al final hay un solo pedido. | Incidencia sorpresa |
 
 ## Cambio por la incidencia
-«Mostrar un identificador simulado, desglose y estado inequívoco de pedido recibido» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
+«Deshabilitar repetición, mostrar pendiente y resolverlo a confirmado o no confirmado sin duplicar.» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
