@@ -10,3 +10,7 @@
 | RF-04 | Escape cancela el diálogo o vuelve a la pantalla anterior. | En el diálogo de quitar, Escape cancela y devuelve el foco a «Quitar». | Tarea crítica |
 | RNF-01 | Foco visible de 3 px y orden lógico (WCAG 2.4.3, 2.4.7). | El foco nunca desaparece ni salta al inicio sin motivo. | Restricción de la tarjeta |
 | RNF-02 | Estados anunciados: agregado, quitado, enviando, confirmado (WCAG 4.1.3). | Cada cambio se lee en la región aria-live. | Accesibilidad (WCAG 2.2) |
+| **RF-07** | **Todos los controles tienen nombre accesible propio (−, +, Quitar, Info) y, al quitar, el foco va al siguiente producto o al título.** | Al quitar con Enter el foco queda en el «Quitar» del siguiente producto; − y + anuncian «Disminuir/Aumentar cantidad de X». | Incidencia sorpresa |
+
+## Cambio por la incidencia
+«Hacer identificables y operables los controles; restaurar foco después de quitar» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

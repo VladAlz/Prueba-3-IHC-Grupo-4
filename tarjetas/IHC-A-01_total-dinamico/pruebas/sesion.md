@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 142 s | 2 | 2 (8 s al ver el total; 6 s antes de confirmar) | Completó, pero confirmó $4,25 cuando pidió 2 cafés ($5,75) | «¿Por qué sigue diciendo 4,25 si puse dos cafés?» |
 | v2 | 88 s | 0 | 0 | Completó y confirmó $5,75 correcto | «Ahí sí cambia el total, rápido.» |
-
+| v2 con incidencia | 79 s | 0 | 0 | Editó la cantidad en «Revisa y confirma»: el botón cambió a $7,25 al mismo tiempo | «El botón dice lo mismo que el total.» |
 
 ## Observaciones con v1
 - Tocó «+» en Café americano: la cantidad pasó a 2, pero subtotal y total siguieron en $1,50 y $4,25.
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Recalcular el total y anunciar cada cambio; impedir confirmar un importe obsoleto» — Editó la cantidad en «Revisa y confirma»: el botón cambió a $7,25 al mismo tiempo (79 s, 0 errores). Cita: «El botón dice lo mismo que el total.» Evidencia: `evidencias/incidencia/`.
