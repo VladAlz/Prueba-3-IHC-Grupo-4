@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 118 s | 1 | 1 (7 s al retomar) | Finalizó con un obligatorio sin marcar y la app mostró «Sesión finalizada» | «Dijo finalizada, pero no marqué la grabación.» |
 | v2 | 104 s | 0 | 1 (lectura del error) | El cierre se bloqueó; marcó el pendiente y finalizó | «Me frenó a tiempo.» |
-
+| v2 con incidencia | 96 s | 0 | 0 | La revisión previa mostró ✕ en «Grabación»; corrigió y finalizó con resumen | «Veo todo lo que falta antes de cerrar.» |
 
 ## Observaciones con v1
 - Al reabrir se recuperaron los datos.
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Añadir revisión previa y resumen comprobable; evitar éxito falso» — La revisión previa mostró ✕ en «Grabación»; corrigió y finalizó con resumen (96 s, 0 errores). Cita: «Veo todo lo que falta antes de cerrar.» Evidencia: `evidencias/incidencia/`.

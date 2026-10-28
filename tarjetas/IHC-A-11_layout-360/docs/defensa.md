@@ -4,8 +4,8 @@
 |---|---|
 | Responsable de la tarjeta (todas las fases) | Vinces Cueva Boris Yussef |
 | Revisor del pull request y observador de la prueba | González Álvarez Vladimir Humberto |
-| Issue del hallazgo | #11 |
-| Ramas | `feature/boris-tarjetas-10-12` |
+| Issue del hallazgo | #11 · Issue de la incidencia (cerrada por el PR de incidencias) |
+| Ramas | `feature/boris-tarjetas-10-12` · `fix/boris-incidencias-10-12` |
 
 **1. Ruta normal y de error:** ver `prototipo/README.md`.
 
@@ -21,3 +21,6 @@
 **¿Qué ley Gestalt aplica y qué carga cognitiva se reduce?**
 
 Región común (Gestalt): cada etapa vive en su propia card separada del Stepper, y proximidad para agrupar etiqueta y campo. Se reduce la carga cognitiva extrínseca: la persona ya no busca campos ocultos ni reconstruye qué paso está activo.
+
+## Incidencia
+«Reorganizar layout responsivo y conservar orden lógico del foco» — Clase `compact`: Stepper compacto, una columna, acciones `sticky` al final y el DOM de acciones después de `main` para que el foco siga el orden visual. Ver `docs/incidencia.md`.
