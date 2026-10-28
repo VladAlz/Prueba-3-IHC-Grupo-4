@@ -41,4 +41,4 @@
 ![Curva antes y después](../diagramas/curva-despues.png)
 
 ## Prueba de la incidencia
-«Hacer identificables y operables los controles; restaurar foco después de quitar» — Tras quitar, el foco quedó en el siguiente producto; finalizó sin volver a tabular (81 s, 0 errores). Cita: «No tuve que empezar desde arriba.» Evidencia: `evidencias/incidencia/`.
+«Anunciar producto eliminado, devolver foco a control pertinente y permitir Deshacer simulado.» — Tras quitar, el foco quedó en el siguiente producto; finalizó sin volver a tabular (81 s, 0 errores). Cita: «No tuve que empezar desde arriba.» Evidencia: `evidencias/incidencia/`.
