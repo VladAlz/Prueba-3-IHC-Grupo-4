@@ -12,5 +12,6 @@ Requisito → flujo → pantalla → componente → wireframe → prototipo/evid
 | RF-04 | Cierre: Guardando → ¿Se guardó? → Finalizada / Error | Paso 5 · Sesión finalizada | Botón bloqueado, banner de error, código de sesión | `wf-04-confirmacion` | prototipo/v1 y v2 · evidencias/estados/ |
 | RNF-01 | Paso 2 Participante | Paso 2 | Sin campo de nombre; pista «No escribas nombres» | `wf-02-accion` | prototipo/v1 y v2 · evidencias/estados/ |
 | RNF-02 | Todas | Todas | Foco al título, foco visible, aria-live | `wf-01 a wf-04` | prototipo/v1 y v2 · evidencias/estados/ |
+| **RF-07** | «¿Formato P-07?» → error | Paso 2 Participante | Error junto al campo (aria-invalid) | `wf-03-error` | prototipo/v2 · evidencias/incidencia/ |
 
 Sitemap: `diagramas/sitemap.png` · User flow: `diagramas/user-flow.png` · Wireframes: `wireframes/`. El fallo de la tarjeta se cubre con **RF-01** y la restricción con **RNF-01**.

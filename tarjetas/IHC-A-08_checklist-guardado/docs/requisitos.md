@@ -10,3 +10,7 @@
 | RF-04 | Mostrar el progreso de la checklist («n de 5 · n de 3 obligatorios»). | El contador cambia al marcar. | Tarea crítica |
 | RNF-01 | Operable con teclado y foco visible. | Espacio marca cada casilla. | Tarea crítica |
 | RNF-02 | Estados del cierre: procesando, error y éxito. | Se ven los tres estados. | Accesibilidad (WCAG 2.2) |
+| **RF-07** | **Diferenciar «Guardando…», «✓ Guardado · hora» y «Sin cambios» en la cabecera y mostrar la barra de progreso general.** | Al marcar, la cabecera pasa por «Guardando…» y luego «✓ Guardado · 09:43». | Incidencia sorpresa |
+
+## Cambio por la incidencia
+«Preservar checklist, diferenciar guardado de no guardado y mostrar progreso» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

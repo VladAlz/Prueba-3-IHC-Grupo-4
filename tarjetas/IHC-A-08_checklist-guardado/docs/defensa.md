@@ -4,8 +4,8 @@
 |---|---|
 | Responsable de la tarjeta (todas las fases) | González Álvarez Vladimir Humberto |
 | Revisor del pull request y observador de la prueba | Mora Beltrán Santiago Sebastián |
-| Issue del hallazgo | #8 |
-| Ramas | `feature/vladimir-tarjetas-07-09` |
+| Issue del hallazgo | #8 · Issue de la incidencia (cerrada por el PR de incidencias) |
+| Ramas | `feature/vladimir-tarjetas-07-09` · `fix/vladimir-incidencias-07-09` |
 
 **1. Ruta normal y de error:** ver `prototipo/README.md`.
 
@@ -21,3 +21,6 @@
 **¿Qué evidencia muestra una mejora real frente a una mejora inferida?**
 
 Mejora real: medida con la misma tarea y la misma persona — en v1 se observaron 2 errores y no finalizó (166 s); en v2 finalizó sin errores (97 s), con cita textual y capturas antes/después. Mejora inferida: lo que esperamos (por ejemplo, que el indicador «Guardado · hora» reduzca la ansiedad) sin una medición directa; se registra como estimada.
+
+## Incidencia
+«Preservar checklist, diferenciar guardado de no guardado y mostrar progreso» — `markSaved()` muestra «Guardando…» y, al terminar, «✓ Guardado · hora»; la barra `#pbar` refleja el avance general. Ver `docs/incidencia.md`.

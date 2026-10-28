@@ -10,3 +10,7 @@
 | RF-04 | Permitir volver a etapas anteriores conservando los datos. | Al volver al paso 3, las marcas siguen. | Tarea crítica |
 | RNF-01 | Operable con teclado; foco al título de cada etapa. | Tab recorre la etapa; el foco va al título. | Tarea crítica |
 | RNF-02 | Estados del cierre: procesando, error y éxito. | Se ven los tres estados. | Accesibilidad (WCAG 2.2) |
+| **RF-07** | **Ante un avance inválido (Continuar o clic en un paso bloqueado), explicar qué falta con una lista enfocable, sin borrar marcas.** | Al pulsar el paso 5 desde el 3 aparece «No puedes ir a…» con los obligatorios faltantes. | Incidencia sorpresa |
+
+## Cambio por la incidencia
+«Bloquear avances inválidos con explicación y permitir volver sin perder marcas» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

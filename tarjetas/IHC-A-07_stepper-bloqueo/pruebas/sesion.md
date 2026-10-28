@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 154 s | 2 | 2 (9 s en el paso 5; 6 s buscando qué faltaba) | Saltó al paso 5 y cerró la sesión sin marcar la checklist | «Me dejó llegar al final, pensé que ya estaba.» |
 | v2 | 131 s | 1 | 1 (12 s con «Continuar» deshabilitado) | No pudo saltar; tardó en entender qué faltaba | «¿Por qué no me deja seguir?» |
-
+| v2 con incidencia | 102 s | 0 | 0 | Leyó la lista de faltantes, marcó los obligatorios y avanzó | «Me dice exactamente qué falta.» |
 
 ## Observaciones con v1
 - Desde el paso 2 pulsó «Revisión y cierre» en el Stepper.
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Bloquear avances inválidos con explicación y permitir volver sin perder marcas» — Leyó la lista de faltantes, marcó los obligatorios y avanzó (102 s, 0 errores). Cita: «Me dice exactamente qué falta.» Evidencia: `evidencias/incidencia/`.

@@ -10,3 +10,7 @@
 | RF-04 | Finalizar con resumen y código de sesión. | Aparece S-2026-0XX. | Tarea crítica |
 | RNF-01 | Privacidad: no solicitar ni almacenar nombres reales. | No existe campo de nombre. | Restricción de la tarjeta |
 | RNF-02 | Operable con teclado; errores asociados al campo. | El error usa aria-describedby. | Accesibilidad (WCAG 2.2) |
+| **RF-07** | **Validar el formato del código seudónimo (P-07: P, guion y 2–3 dígitos) al salir del campo y al continuar, con mensaje junto al campo.** | «ana» muestra «El código debe tener el formato P-07…». | Incidencia sorpresa |
+
+## Cambio por la incidencia
+«Sustituir por código seudónimo y validar su formato» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

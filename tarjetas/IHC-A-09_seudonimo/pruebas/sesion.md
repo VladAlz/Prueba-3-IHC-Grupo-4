@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 139 s | 2 | 2 (11 s ante «Nombre completo»; 5 s en la tabla) | Escribió un nombre inventado para poder avanzar; el nombre quedó en la tabla | «No puedo poner el nombre real, pero no me deja seguir sin nombre.» |
 | v2 | 88 s | 0 | 0 | Usó el código P-07; la tabla muestra solo el código | «Con el código está bien.» |
-
+| v2 con incidencia | 94 s | 1 | 1 (lectura del error) | Escribió «p7»; el mensaje indicó el formato y corrigió a P-07 | «Me dijo el formato, listo.» |
 
 ## Observaciones con v1
 - El paso 2 exigía «Nombre completo».
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Sustituir por código seudónimo y validar su formato» — Escribió «p7»; el mensaje indicó el formato y corrigió a P-07 (94 s, 1 errores). Cita: «Me dijo el formato, listo.» Evidencia: `evidencias/incidencia/`.
