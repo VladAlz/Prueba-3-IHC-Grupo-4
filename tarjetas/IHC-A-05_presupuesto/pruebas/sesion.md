@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 109 s | 1 | 1 (6 s en «Revisa y confirma») | Confirmó $5,75 sin darse cuenta del exceso | «Pensé que seguía en 4,25.» |
 | v2 | 86 s | 0 | 1 (4 s leyendo el aviso) | Vio «Te pasas por $1,50» y bajó a 1 café | «Me avisó al toque, bajo uno.» |
-
+| v2 con incidencia | 82 s | 0 | 0 | Al confirmar con exceso eligió «Ajustar pedido»; el carrito se conservó | «Bien que no se borró nada.» |
 
 ## Observaciones con v1
 - Agregó café y sánduche: el medidor del menú mostró $4,25 de $4,25.
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Avisar antes de confirmar y ofrecer ajustar el pedido manteniendo el carrito» — Al confirmar con exceso eligió «Ajustar pedido»; el carrito se conservó (82 s, 0 errores). Cita: «Bien que no se borró nada.» Evidencia: `evidencias/incidencia/`.

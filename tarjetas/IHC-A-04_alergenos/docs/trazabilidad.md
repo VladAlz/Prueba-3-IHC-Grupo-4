@@ -12,5 +12,6 @@ Requisito → flujo → pantalla → componente → wireframe → prototipo/evid
 | RF-04 | Error: «¿Leyó la advertencia?» | 3.1 Revisa y confirma | Advertencia + casilla obligatoria + error | `wf-03-error` | prototipo/v2 · evidencias/antes-despues/ |
 | RNF-01 | Todas | Todas | Ícono + texto (no solo color) | `wf-01 a wf-04` | prototipo/v1 y v2 · evidencias/estados/ |
 | RNF-02 | Todas | Todas | Foco de 3 px, «Saltar al contenido», aria-live | `wf-01 a wf-04` | prototipo/v1 y v2 · evidencias/estados/ |
+| **RF-07** | Editar: «Volver a editar sin perder el pedido» | 3.1 → 3.0 | Aviso role="alert" + enlace con foco al producto | `wf-03-error` | prototipo/v2 · evidencias/incidencia/ |
 
 Sitemap: `diagramas/sitemap.png` · User flow: `diagramas/user-flow.png` · Wireframes: `wireframes/`. El fallo de la tarjeta se cubre con **RF-04** y la restricción con **RNF-01**.

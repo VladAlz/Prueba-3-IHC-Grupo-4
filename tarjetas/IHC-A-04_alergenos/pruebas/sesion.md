@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 118 s | 1 | 1 (7 s en «Info») | Confirmó el pedido con el brownie (contiene nueces) sin ver aviso | «No vi nada de alergias, pensé que estaba bien.» |
 | v2 | 97 s | 0 | 1 (6 s leyendo la advertencia) | Vio la advertencia; desmarcó y volvió a «Mi pedido» por su cuenta | «Ah, el brownie tiene nueces, lo saco.» |
-
+| v2 con incidencia | 84 s | 0 | 0 | Usó «Volver a editar sin perder el pedido» y quitó el brownie; café y sánduche se conservaron | «Me llevó directo al brownie.» |
 
 ## Observaciones con v1
 - Agregó el brownie desde el menú: no había ninguna marca de alérgeno.
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Incorporar aviso accesible y opción de volver a editar sin perder pedido» — Usó «Volver a editar sin perder el pedido» y quitó el brownie; café y sánduche se conservaron (84 s, 0 errores). Cita: «Me llevó directo al brownie.» Evidencia: `evidencias/incidencia/`.

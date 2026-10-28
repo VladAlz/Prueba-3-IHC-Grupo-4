@@ -10,3 +10,7 @@
 | RF-04 | Ante un corte, informar y permitir reintentar. | Aparece el error y «Reintentar envío». | Tarea crítica |
 | RNF-01 | Funcionar con red lenta (4 s) sin perder el pedido. | El carrito se conserva tras el error. | Restricción de la tarjeta |
 | RNF-02 | Estados anunciados y foco en el mensaje de error. | El lector lee el error al aparecer. | Accesibilidad (WCAG 2.2) |
+| **RF-07** | **Modelar tres estados — Pendiente (◷, ámbar), Confirmado (✓, verde) y No confirmado (✕, rojo) — con texto, ícono y anuncio; reintentar usa el mismo código de envío para no duplicar.** | Con «Se corta», aparece «No confirmado»; al reintentar se obtiene un solo pedido N.º 031. | Incidencia sorpresa |
+
+## Cambio por la incidencia
+«Modelar pendiente / confirmado / no confirmado y evitar duplicación» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

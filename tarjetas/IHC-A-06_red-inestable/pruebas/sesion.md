@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 64 s | 1 | 1 (3 s tras el primer toque) | Pulsó dos veces; se registraron los pedidos N.º 031 y N.º 032 | «No hacía nada, por eso volví a tocar.» |
 | v2 | 58 s | 0 | 1 (4 s esperando con «Enviando…») | Un solo pedido N.º 031 | «Vi que estaba enviando y esperé.» |
-
+| v2 con incidencia | 73 s | 0 | 1 (lectura de «No confirmado») | Con corte de red vio «No confirmado», reintentó y obtuvo un solo pedido | «Dice que no se registró y que no se duplica, entonces reintento.» |
 
 ## Observaciones con v1
 - Pulsó «Confirmar»; durante 3 s no cambió nada en el botón.
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Modelar pendiente / confirmado / no confirmado y evitar duplicación» — Con corte de red vio «No confirmado», reintentó y obtuvo un solo pedido (73 s, 0 errores). Cita: «Dice que no se registró y que no se duplica, entonces reintento.» Evidencia: `evidencias/incidencia/`.

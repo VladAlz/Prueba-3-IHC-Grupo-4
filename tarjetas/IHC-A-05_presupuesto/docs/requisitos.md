@@ -10,3 +10,7 @@
 | RF-04 | Mostrar procesando, error con reintento y confirmación con total. | Se ven los tres estados. | Tarea crítica |
 | RNF-01 | El aviso de exceso usa texto e ícono, no solo color. | Legible en escala de grises. | Restricción de la tarjeta |
 | RNF-02 | Operable con teclado; el aviso se anuncia (aria-live). | El lector lee «Total $5,75». | Accesibilidad (WCAG 2.2) |
+| **RF-07** | **Antes de confirmar un pedido sobre el presupuesto, avisar con la diferencia y ofrecer «Ajustar pedido» (conserva el carrito) o «Confirmar igual».** | Con $5,75, «Confirmar» abre el aviso; «Ajustar pedido» vuelve a «Mi pedido» con los 3 productos. | Incidencia sorpresa |
+
+## Cambio por la incidencia
+«Avisar antes de confirmar y ofrecer ajustar el pedido manteniendo el carrito» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
