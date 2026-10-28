@@ -4,8 +4,8 @@
 |---|---|
 | Responsable de la tarjeta (todas las fases) | Acaro Ibujés Pedro Sebastián |
 | Revisor del pull request y observador de la prueba | Vinces Cueva Boris Yussef |
-| Issue del hallazgo | #2 |
-| Ramas | `feature/pedro-tarjetas-01-03` |
+| Issue del hallazgo | #2 · Issue de la incidencia (cerrada por el PR de incidencias) |
+| Ramas | `feature/pedro-tarjetas-01-03` · `fix/pedro-incidencias-01-03` |
 
 **1. Ruta normal y de error:** ver `prototipo/README.md`.
 
@@ -21,3 +21,6 @@
 **Demuestre edición, eliminación y confirmación sin usar el ratón.**
 
 Demostración: Tab → «Saltar al contenido» → Enter en «Ver menú» → Enter en «Agregar Café americano» y «Agregar Sánduche» → Tab a «Mi pedido» → Enter en «Aumentar cantidad de Café» → Enter en «Quitar Sánduche» → Enter en «Sí, quitar» (o Escape para cancelar) → el foco queda en el siguiente «Quitar» → Tab a «Revisar pedido» → Enter en «Confirmar».
+
+## Incidencia
+«Hacer identificables y operables los controles; restaurar foco después de quitar» — Todos los controles (−, +, cantidad, Info) tienen nombre propio; `doQuit()` mueve el foco al «Quitar» del siguiente producto o al título y anuncia «X quitado. Total $Y». Ver `docs/incidencia.md`.

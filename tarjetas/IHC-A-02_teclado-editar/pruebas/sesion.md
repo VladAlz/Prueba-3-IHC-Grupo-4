@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 171 s | 3 | 3 (10 s en el ✕; 7 s tras quitar; 5 s al volver a tabular) | Completó, pero quitó el café por error y tuvo que volver al menú | «¿Ese botón qué hace? Se borró sin preguntarme.» |
 | v2 | 104 s | 1 | 1 (5 s tras quitar, foco al inicio) | Completó; la confirmación evitó quitar por error | «Me preguntó antes de quitar, bien.» |
-
+| v2 con incidencia | 81 s | 0 | 0 | Tras quitar, el foco quedó en el siguiente producto; finalizó sin volver a tabular | «No tuve que empezar desde arriba.» |
 
 ## Observaciones con v1
 - Tab llegó a un botón que el lector anunció solo como «botón».
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Hacer identificables y operables los controles; restaurar foco después de quitar» — Tras quitar, el foco quedó en el siguiente producto; finalizó sin volver a tabular (81 s, 0 errores). Cita: «No tuve que empezar desde arriba.» Evidencia: `evidencias/incidencia/`.

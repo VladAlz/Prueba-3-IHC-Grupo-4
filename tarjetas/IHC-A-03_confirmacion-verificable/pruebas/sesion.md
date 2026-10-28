@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 96 s | 1 | 2 (9 s en «Listo»; 6 s buscando el número) | Confirmó, pero no pudo decir qué pidió ni con qué número retirar | «¿Listo qué? ¿Ya está o tengo que hacer algo más?» |
 | v2 | 71 s | 0 | 0 | Leyó el N.º 031 y el resumen | «Ya tengo el número para la caja.» |
-
+| v2 con incidencia | 68 s | 0 | 0 | Leyó «Recibido por la cafetería», el código CF y el desglose; salió y borró | «Clarísimo que sí llegó.» |
 
 ## Observaciones con v1
 - Al terminar vio solo «Listo».
@@ -39,3 +39,6 @@
 | Generalización a otros usuarios | Estimada | Una sesión; requiere más participantes. |
 
 ![Curva antes y después](../diagramas/curva-despues.png)
+
+## Prueba de la incidencia
+«Mostrar un identificador simulado, desglose y estado inequívoco de pedido recibido» — Leyó «Recibido por la cafetería», el código CF y el desglose; salió y borró (68 s, 0 errores). Cita: «Clarísimo que sí llegó.» Evidencia: `evidencias/incidencia/`.

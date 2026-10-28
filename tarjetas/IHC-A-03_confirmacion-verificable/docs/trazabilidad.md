@@ -12,5 +12,6 @@ Requisito → flujo → pantalla → componente → wireframe → prototipo/evid
 | RF-04 | Principal: Éxito → Salir | 4.0 Confirmación | Botón «Salir y borrar este pedido» | `wf-04-confirmacion` | prototipo/v1 y v2 · evidencias/estados/ |
 | RNF-01 | Todas | 1.0 Inicio · 4.0 | Aviso «Sin datos personales»; sin campos personales | `wf-01-inicio` | prototipo/v1 y v2 · evidencias/estados/ |
 | RNF-02 | Todas | Todas | Foco de 3 px, «Saltar al contenido», aria-live | `wf-01 a wf-04` | prototipo/v1 y v2 · evidencias/estados/ |
+| **RF-07** | Principal: «Recibido por la cafetería» | 4.0 Confirmación | Estado ✓, código sin datos personales, desglose | `wf-04-confirmacion` | prototipo/v2 · evidencias/incidencia/ |
 
 Sitemap: `diagramas/sitemap.png` · User flow: `diagramas/user-flow.png` · Wireframes: `wireframes/`. El fallo de la tarjeta se cubre con **RF-03** y la restricción con **RNF-01**.
