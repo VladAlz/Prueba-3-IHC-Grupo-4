@@ -10,3 +10,7 @@
 | RF-04 | Impedir confirmar sin reconocer la advertencia. | Si no se marca «Leí la advertencia…», aparece un error y no se envía. | Fallo de la tarjeta (Issue #4) |
 | RNF-01 | La advertencia usa ícono y texto, no solo color (WCAG 1.4.1). | Se entiende en la vista en escala de grises. | Restricción de la tarjeta |
 | RNF-02 | Operable con teclado y foco visible. | La casilla y los botones se alcanzan con Tab. | Accesibilidad (WCAG 2.2) |
+| **RF-07** | **La advertencia es accesible (role="alert", recibe el foco al entrar) y ofrece «Volver a editar sin perder el pedido», que lleva al producto marcado.** | Al abrir «Revisa y confirma» el lector lee la advertencia; el enlace lleva a «Mi pedido» con el foco en «Quitar Brownie». | Incidencia sorpresa |
+
+## Cambio por la incidencia
+«Incorporar aviso accesible y opción de volver a editar sin perder pedido» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

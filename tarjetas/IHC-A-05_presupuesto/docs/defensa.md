@@ -4,8 +4,8 @@
 |---|---|
 | Responsable de la tarjeta (todas las fases) | Mora Beltrán Santiago Sebastián |
 | Revisor del pull request y observador de la prueba | Acaro Ibujés Pedro Sebastián |
-| Issue del hallazgo | #5 |
-| Ramas | `feature/santiago-tarjetas-04-06` |
+| Issue del hallazgo | #5 · Issue de la incidencia (cerrada por el PR de incidencias) |
+| Ramas | `feature/santiago-tarjetas-04-06` · `fix/santiago-incidencias-04-06` |
 
 **1. Ruta normal y de error:** ver `prototipo/README.md`.
 
@@ -21,3 +21,6 @@
 **¿Qué touchpoint pasa a ser momento de verdad y por qué?**
 
 «Editar Mi pedido» pasa a ser momento de verdad: en el diagnóstico se consideraba un paso neutro, pero la observación mostró que un solo «+» lleva el pedido de $4,25 a $5,75 sin aviso; ahí se decide si la persona respeta su presupuesto o paga de más (emoción −2 en la curva inicial).
+
+## Incidencia
+«Avisar antes de confirmar y ofrecer ajustar el pedido manteniendo el carrito» — En el clic de confirmar, si `total() > BUDGET`, se abre un diálogo con la diferencia y «Ajustar pedido» (vuelve a «Mi pedido» sin vaciar el carrito) o «Confirmar igual». Ver `docs/incidencia.md`.
