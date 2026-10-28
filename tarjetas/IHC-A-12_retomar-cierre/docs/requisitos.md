@@ -13,4 +13,4 @@
 | **RF-07** | **Revisión previa con ✓/✕ por cada obligatorio, tarea, código y registros; «Finalizar» solo habilitado si todo está ✓ y el éxito incluye un resumen comprobable.** | Con un obligatorio pendiente, la revisión muestra ✕ y «Finalizar» queda deshabilitado. | Incidencia sorpresa |
 
 ## Cambio por la incidencia
-«Añadir revisión previa y resumen comprobable; evitar éxito falso» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
+«Impedir finalización falsa, explicar elemento pendiente y permitir completarlo sin borrar datos.» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

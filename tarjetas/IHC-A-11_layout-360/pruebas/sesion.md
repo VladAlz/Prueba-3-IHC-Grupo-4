@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 176 s | 3 | 2 (10 s buscando el Stepper; 8 s buscando Observaciones) | No encontró el campo Observaciones; registró sin observaciones | «La tarjeta tapa los pasos y no veo dónde escribir.» |
 | v2 | 121 s | 1 | 1 (Tab saltó primero a los botones) | Vio todos los campos, pero el foco iba primero a los botones | «Ya se ve todo, pero el Tab va raro.» |
-| v2 con incidencia | 98 s | 0 | 0 | Stepper compacto, campos en orden y acciones al final | «Ahora va en orden.» |
+| v2 con incidencia | 95 s | 0 | 0 | A 320 px vio «Continuar» completo y avanzó con teclado en orden | «Ya entra todo en la pantalla.» |
 
 ## Observaciones con v1
 - La card subía sobre el Stepper.
@@ -41,4 +41,4 @@
 ![Curva antes y después](../diagramas/curva-despues.png)
 
 ## Prueba de la incidencia
-«Reorganizar layout responsivo y conservar orden lógico del foco» — Stepper compacto, campos en orden y acciones al final (98 s, 0 errores). Cita: «Ahora va en orden.» Evidencia: `evidencias/incidencia/`.
+«Ajustar maquetación, evitar desplazamiento horizontal y conservar orden de lectura.» — A 320 px vio «Continuar» completo y avanzó con teclado en orden (95 s, 0 errores). Cita: «Ya entra todo en la pantalla.» Evidencia: `evidencias/incidencia/`.

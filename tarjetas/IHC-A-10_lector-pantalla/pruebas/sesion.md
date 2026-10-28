@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | v1 | 188 s | 3 | 3 (preguntó «¿dónde estoy?» tres veces) | Completó con ayuda del contexto, sin saber el paso actual | «El lector solo dice números, no sé cuál es el actual.» |
 | v2 | 129 s | 1 | 1 (6 s tras cambiar de paso) | Escuchó «Paso 2 de 5 · Participante» | «Ya me dice en qué paso voy.» |
-| v2 con incidencia | 104 s | 0 | 0 | Se anunció cada cambio de paso y el foco quedó visible | «Me avisa al cambiar, perfecto.» |
+| v2 con incidencia | 101 s | 0 | 0 | En escala de grises identificó el paso por texto y NVDA anunció «paso actual»; recorrió todo con teclado | «Sin colores igual sé que estoy en el paso 2.» |
 
 ## Observaciones con v1
 - El Stepper solo cambia el color del círculo activo.
@@ -41,4 +41,4 @@
 ![Curva antes y después](../diagramas/curva-despues.png)
 
 ## Prueba de la incidencia
-«Añadir texto/estado accesible del paso activo y foco visible» — Se anunció cada cambio de paso y el foco quedó visible (104 s, 0 errores). Cita: «Me avisa al cambiar, perfecto.» Evidencia: `evidencias/incidencia/`.
+«Identificar estado por texto y atributos semánticos; demostrar operación por teclado.» — En escala de grises identificó el paso por texto y NVDA anunció «paso actual»; recorrió todo con teclado (101 s, 0 errores). Cita: «Sin colores igual sé que estoy en el paso 2.» Evidencia: `evidencias/incidencia/`.

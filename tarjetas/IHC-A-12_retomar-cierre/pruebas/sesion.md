@@ -41,4 +41,4 @@
 ![Curva antes y después](../diagramas/curva-despues.png)
 
 ## Prueba de la incidencia
-«Añadir revisión previa y resumen comprobable; evitar éxito falso» — La revisión previa mostró ✕ en «Grabación»; corrigió y finalizó con resumen (96 s, 0 errores). Cita: «Veo todo lo que falta antes de cerrar.» Evidencia: `evidencias/incidencia/`.
+«Impedir finalización falsa, explicar elemento pendiente y permitir completarlo sin borrar datos.» — La revisión previa mostró ✕ en «Grabación»; corrigió y finalizó con resumen (96 s, 0 errores). Cita: «Veo todo lo que falta antes de cerrar.» Evidencia: `evidencias/incidencia/`.

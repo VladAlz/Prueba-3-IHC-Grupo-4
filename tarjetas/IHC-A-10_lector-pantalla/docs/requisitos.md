@@ -13,4 +13,4 @@
 | **RF-07** | **Paso activo con `aria-current="step"`, anuncio «Paso n de 5: Nombre» en cada cambio y foco visible de 3 px.** | NVDA lee «Participante, paso actual»; el anillo de foco es visible. | Incidencia sorpresa |
 
 ## Cambio por la incidencia
-«Añadir texto/estado accesible del paso activo y foco visible» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
+«Identificar estado por texto y atributos semánticos; demostrar operación por teclado.» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).

@@ -23,4 +23,4 @@
 Región común (Gestalt): cada etapa vive en su propia card separada del Stepper, y proximidad para agrupar etiqueta y campo. Se reduce la carga cognitiva extrínseca: la persona ya no busca campos ocultos ni reconstruye qué paso está activo.
 
 ## Incidencia
-«Reorganizar layout responsivo y conservar orden lógico del foco» — Clase `compact`: Stepper compacto, una columna, acciones `sticky` al final y el DOM de acciones después de `main` para que el foco siga el orden visual. Ver `docs/incidencia.md`.
+«Ajustar maquetación, evitar desplazamiento horizontal y conservar orden de lectura.» — Clase `compact` a 320 px: una columna, Stepper compacto, acciones que se reparten el ancho (`flex:1`) y orden del DOM igual al visual; sin desplazamiento horizontal. Ver `docs/incidencia.md`.

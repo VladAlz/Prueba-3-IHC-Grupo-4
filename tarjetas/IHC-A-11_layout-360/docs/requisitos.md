@@ -10,7 +10,7 @@
 | RF-04 | Acciones Anterior/Continuar siempre al alcance. | Barra de acciones fija abajo. | Tarea crítica |
 | RNF-01 | Sin desplazamiento horizontal a 360 px (WCAG 1.4.10). | Ancho de página ≤ 360 px. | Restricción de la tarjeta |
 | RNF-02 | Orden del foco igual al orden visual (WCAG 2.4.3). | Tab recorre título → campos → acciones. | Accesibilidad (WCAG 2.2) |
-| **RF-07** | **Layout responsivo de una columna con Stepper compacto, acciones fijas al final y orden del DOM = orden visual.** | En 360 px Tab va de los campos a Anterior/Continuar. | Incidencia sorpresa |
+| **RF-07** | **Maquetación responsiva hasta 320 px: sin desplazamiento horizontal, «Continuar» siempre visible y orden de lectura y de foco igual al visual.** | A 320 px, «Anterior» y «Continuar» se ven completos y Tab recorre campos → acciones. | Incidencia sorpresa |
 
 ## Cambio por la incidencia
-«Reorganizar layout responsivo y conservar orden lógico del foco» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
+«Ajustar maquetación, evitar desplazamiento horizontal y conservar orden de lectura.» → se agregó **RF-07**. Flujo actualizado en `diagramas/user-flow.png` (nodos en naranja).
