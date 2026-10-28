@@ -23,4 +23,4 @@
 El momento de verdad es «Revisar y finalizar»: la revisión previa lo hace visible con ✓/✕ por cada obligatorio y un estado global («Aún no se puede cerrar» / «Todo listo»). El estado final se comprueba con el resumen de cierre (obligatorios 3 de 3, registros, código de sesión) y en la prueba con la observación de que ya no aparece éxito con pendientes.
 
 ## Incidencia
-«Añadir revisión previa y resumen comprobable; evitar éxito falso» — `step4()` muestra la revisión previa ✓/✕ por punto; «Finalizar» se deshabilita (`aria-describedby`) mientras haya ✕; `done()` muestra un resumen comprobable con conteos. Ver `docs/incidencia.md`.
+«Impedir finalización falsa, explicar elemento pendiente y permitir completarlo sin borrar datos.» — `step4()` muestra la revisión previa ✓/✕ por punto; «Finalizar» se deshabilita (`aria-describedby`) mientras haya ✕; `done()` muestra un resumen comprobable con conteos. Ver `docs/incidencia.md`.
